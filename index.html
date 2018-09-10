@@ -277,6 +277,339 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/10/linux-安装RabbitMq/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/10/linux-安装RabbitMq/" itemprop="url">
+                  linux 安装RabbitMq
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-10 19:49:31 / Modified: 19:49:32" itemprop="dateCreated datePublished" datetime="2018-09-10T19:49:31+08:00">2018-09-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>安装rabitmq</p>
+<pre><code>jangozw@jianggedeMacBook-Pro:/tmp|⇒  brew install rabbitmq
+</code></pre><p>如果有提示：Error: parent directory is world writable but not sticky</p>
+<pre><code>jangozw@jianggedeMacBook-Pro:/tmp|⇒  brew install rabbitmq
+
+Updating Homebrew...
+==&gt; Auto-updated Homebrew!
+Updated 1 tap (homebrew/core).
+==&gt; New Formulae
+lsusb                                                                                                  serverless
+==&gt; Updated Formulae
+apache-flink                      folly                             gimme                             harfbuzz                          icdiff                            perl-build
+
+Error: Could not link:
+/usr/local/share/doc/homebrew
+
+Please delete these paths and run `brew update`.
+==&gt; Downloading https://dl.bintray.com/rabbitmq/all/rabbitmq-server/3.7.7/rabbitmq-server-generic-unix-3.7.7.tar.xz
+Already downloaded: /Users/Django/Library/Caches/Homebrew/rabbitmq-3.7.7.tar.xz
+==&gt; /usr/bin/unzip -qq -j /usr/local/Cellar/rabbitmq/3.7.7_1/plugins/rabbitmq_management-3.7.7.ez rabbitmq_management-3.7.7/priv/www/cli/rabbitmqadmin
+Error: parent directory is world writable but not sticky
+Please report this bug:
+  https://docs.brew.sh/Troubleshooting
+/usr/local/Homebrew/Library/Homebrew/vendor/portable-ruby/2.3.7/lib/ruby/2.3.0/tmpdir.rb:93:in `mktmpdir&apos;
+/usr/local/Homebrew/Library/Homebrew/utils/fork.rb:6:in `safe_fork&apos;
+</code></pre><p>就chmod +t /tmp (我是在/tmp目录下安装的)</p>
+<pre><code>jangozw@jianggedeMacBook-Pro:/tmp|⇒  sudo chmod +t /tmp
+jangozw@jianggedeMacBook-Pro:/tmp|⇒  brew install rabbitmq
+</code></pre><p>安装成功</p>
+<pre><code>Updating Homebrew...
+==&gt; Downloading https://dl.bintray.com/rabbitmq/all/rabbitmq-server/3.7.7/rabbitmq-server-generic-unix-3.7.7.tar.xz
+Already downloaded: /Users/Django/Library/Caches/Homebrew/rabbitmq-3.7.7.tar.xz
+==&gt; /usr/bin/unzip -qq -j /usr/local/Cellar/rabbitmq/3.7.7_1/plugins/rabbitmq_management-3.7.7.ez rabbitmq_management-3.7.7/priv/www/cli/rabbitmqadmin
+==&gt; Caveats
+Management Plugin enabled by default at http://localhost:15672
+
+Bash completion has been installed to:
+  /usr/local/etc/bash_completion.d
+
+To have launchd start rabbitmq now and restart at login:
+  brew services start rabbitmq
+Or, if you don&apos;t want/need a background service you can just run:
+  rabbitmq-server
+==&gt; Summary
+🍺  /usr/local/Cellar/rabbitmq/3.7.7_1: 233 files, 13.3MB, built in 2 seconds
+</code></pre><p>根据安装成功后的提示信息可知启动方法：</p>
+<pre><code>/usr/local/Cellar/rabbitmq/3.7.7_1/sbin/rabbitmq-server
+</code></pre><p>管理后台：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:15672 </span><br><span class="line">用户：guest </span><br><span class="line">密码：guest</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/10/docker-安装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/10/docker-安装/" itemprop="url">
+                  docker 安装
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-10 19:48:19 / Modified: 19:50:38" itemprop="dateCreated datePublished" datetime="2018-09-10T19:48:19+08:00">2018-09-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="下载docker"><a href="#下载docker" class="headerlink" title="下载docker"></a>下载docker</h3><pre><code>https://download.docker.com/mac/stable/Docker.dmg
+直接下一步安装完，就会显示在系统状态栏，然后更改下国内镜像源。
+</code></pre><h3 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">⇒  docker pull centos</span><br><span class="line">jangozw@jianggedeMacBook-Pro:~/www-data|</span><br><span class="line">⇒  sudo docker run -it --name myFirstCentos centos /bin/bash</span><br><span class="line">Password:</span><br><span class="line">[root@f650f70f93d1 /]#</span><br></pre></td></tr></table></figure>
+<p>这就进入了创建的一个centos 容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">查看系统：</span><br><span class="line">[root@f650f70f93d1 /]# cat /etc/redhat-release</span><br><span class="line">CentOS Linux release 7.5.1804 (Core)</span><br><span class="line">[root@f650f70f93d1 /]#</span><br></pre></td></tr></table></figure></p>
+<p>现在就可以在里面装各种软件了，就当是centos用。<br>执行 exit 退出容器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">查看已经创建的容器和状态</span><br><span class="line">  docker ps -a</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES</span><br><span class="line">4da46cd0a26a        centos              &quot;/bin/bash&quot;              41 seconds ago      Exited (0) 4 seconds ago                        myFirstCentos</span><br></pre></td></tr></table></figure>
+<p>由status可知此时容器是 退出exit 状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">启动容器：</span><br><span class="line">⇒  docker start 4da46cd0a26a</span><br><span class="line">4da46cd0a26a</span><br><span class="line">jangozw@jianggedeMacBook-Pro:~/www-data|</span><br><span class="line">⇒  docker ps -a</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES</span><br><span class="line">4da46cd0a26a        centos              &quot;/bin/bash&quot;              5 minutes ago       Up 6 seconds                                    myFirstCentos</span><br><span class="line">看状态已经改变了</span><br><span class="line">再进入容器 （参数是容器id/名称）</span><br><span class="line">⇒  docker attach 4da46cd0a26a </span><br><span class="line">[root@4da46cd0a26a /]#</span><br><span class="line">停止容器</span><br><span class="line">[root@4da46cd0a26a /]# exit</span><br><span class="line">⇒  docker stop myFirstCentos</span><br><span class="line">myFirstCentos</span><br><span class="line">jangozw@jianggedeMacBook-Pro:~/www-data|</span><br><span class="line">⇒</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/10/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -449,7 +782,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
