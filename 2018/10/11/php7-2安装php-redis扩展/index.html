@@ -108,24 +108,24 @@
 
 
 
-  <meta name="description" content="Docker 打包命令拉取镜像 ⇒  docker pull centos 创建容器 ⇒  sudo docker run -it --name myFirstCentos centos /bin/bash 查看容器 ⇒  docker ps -a CONTAINER ID        IMAGE               COMMAND                  CREATED">
+  <meta name="description" content="https://blog.csdn.net/moliyiran/article/details/80890799 注意配置 php-ocnfig 路径">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker 打包镜像">
-<meta property="og:url" content="http://yoursite.com/2018/09/20/docker-打包镜像/index.html">
+<meta property="og:title" content="php7.2安装php-redis扩展">
+<meta property="og:url" content="http://yoursite.com/2018/10/11/php7-2安装php-redis扩展/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Docker 打包命令拉取镜像 ⇒  docker pull centos 创建容器 ⇒  sudo docker run -it --name myFirstCentos centos /bin/bash 查看容器 ⇒  docker ps -a CONTAINER ID        IMAGE               COMMAND                  CREATED">
+<meta property="og:description" content="https://blog.csdn.net/moliyiran/article/details/80890799 注意配置 php-ocnfig 路径">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-20T09:33:16.000Z">
+<meta property="og:updated_time" content="2018-10-11T12:12:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="docker 打包镜像">
-<meta name="twitter:description" content="Docker 打包命令拉取镜像 ⇒  docker pull centos 创建容器 ⇒  sudo docker run -it --name myFirstCentos centos /bin/bash 查看容器 ⇒  docker ps -a CONTAINER ID        IMAGE               COMMAND                  CREATED">
+<meta name="twitter:title" content="php7.2安装php-redis扩展">
+<meta name="twitter:description" content="https://blog.csdn.net/moliyiran/article/details/80890799 注意配置 php-ocnfig 路径">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/20/docker-打包镜像/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/11/php7-2安装php-redis扩展/"/>
 
 
 
@@ -135,7 +135,7 @@
   };
 </script>
 
-  <title>docker 打包镜像 | Hexo</title>
+  <title>php7.2安装php-redis扩展 | Hexo</title>
   
 
 
@@ -280,7 +280,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/20/docker-打包镜像/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/11/php7-2安装php-redis扩展/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -297,7 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">docker 打包镜像
+          <h1 class="post-title" itemprop="name headline">php7.2安装php-redis扩展
               
             
           </h1>
@@ -322,7 +322,7 @@
                 
               
 
-              <time title="Created: 2018-09-20 16:59:46 / Modified: 17:33:16" itemprop="dateCreated datePublished" datetime="2018-09-20T16:59:46+08:00">2018-09-20</time>
+              <time title="Created: 2018-10-11 20:10:29 / Modified: 20:12:59" itemprop="dateCreated datePublished" datetime="2018-10-11T20:10:29+08:00">2018-10-11</time>
             
 
             
@@ -360,51 +360,8 @@
       
 
       
-        <h4 id="Docker-打包命令"><a href="#Docker-打包命令" class="headerlink" title="Docker 打包命令"></a>Docker 打包命令</h4><p>拉取镜像</p>
-<pre><code>⇒  docker pull centos
-</code></pre><p>创建容器</p>
-<pre><code>⇒  sudo docker run -it --name myFirstCentos centos /bin/bash
-</code></pre><p>查看容器</p>
-<pre><code>⇒  docker ps -a
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
-4da46cd0a26a        centos              &quot;/bin/bash&quot;              9 days ago          Exited (0) 40 minutes ago                       myFirstCentos
-</code></pre><p>启动容器</p>
-<pre><code>⇒  docker start myFirstCentos
-myFirstCentos
-</code></pre><p>进入容器 （添加test.txt）</p>
-<pre><code>⇒  docker attach myFirstCentos
-    [root@4da46cd0a26a /]# ls
-    bin  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
-    [root@4da46cd0a26a /]# cd tmp/
-    [root@4da46cd0a26a tmp]# ls
-    ks-script-Lu6hIQ  test.txt  yum.log
-    [root@4da46cd0a26a tmp]# exit
-</code></pre><p>提交修改</p>
-<pre><code>⇒  docker commit 4da46cd0a26a jangozw/centos-test:v1
-sha256:783ce3eaff7129a839cc67cf6bd88b6effc9ac6f9b2a36e5508c07d6666e1cd1
-⇒
-</code></pre><p>登陆docker </p>
-<pre><code>⇒ docker login (执行会让你输入用户名密码)
-</code></pre><p>推送到hub.docker    </p>
-<pre><code>⇒  docker push jangozw/centos-test:v1
-The push refers to repository [docker.io/jangozw/centos-test]
-0b2b943ab4e1: Pushed
-1d31b5806ba4: Mounted from jangozw/centos-lnmp
-v1: digest:         sha256:81651353f780acd8842be300ca9c0cdeea93f87ae016b76925cdbfd00562c984 size: 736
-⇒
-</code></pre><p>提交成功，查看镜像</p>
-<pre><code>⇒  docker images
-REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE
-jangozw/centos-test   v1                  783ce3eaff71        3 minutes ago       200MB
-jangozw/centos-lnmp   v1                  09d5dd7b4fd3        About an hour ago   200MB
-nginx                 latest              06144b287844        2 weeks ago         109MB
-centos                latest              5182e96772bf        6 weeks ago         200MB
-⇒
-</code></pre><p>在远程仓库查看</p>
-<pre><code>https://hub.docker.com 
-</code></pre><p>打包成功，这时候可以拉取自己的镜像了</p>
-<pre><code>⇒ docker pull jangozw/centos-test:v1 
-</code></pre><p>创建这个镜像的容器后发现 test.txt 在里面</p>
+        <p><a href="https://blog.csdn.net/moliyiran/article/details/80890799" target="_blank" rel="noopener">https://blog.csdn.net/moliyiran/article/details/80890799</a></p>
+<p>注意配置 php-ocnfig 路径</p>
 
       
     </div>
@@ -432,8 +389,8 @@ centos                latest              5182e96772bf        6 weeks ago       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/10/linux-安装RabbitMq/" rel="next" title="linux 安装RabbitMq">
-                <i class="fa fa-chevron-left"></i> linux 安装RabbitMq
+              <a href="/2018/10/05/docker-搭建开发环境/" rel="next" title="docker 搭建开发环境">
+                <i class="fa fa-chevron-left"></i> docker 搭建开发环境
               </a>
             
           </div>
@@ -441,10 +398,6 @@ centos                latest              5182e96772bf        6 weeks ago       
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/21/阿里云ssh登陆不上问题/" rel="prev" title="阿里云ssh登陆不上问题">
-                阿里云ssh登陆不上问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -489,17 +442,8 @@ centos                latest              5182e96772bf        6 weeks ago       
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -544,22 +488,6 @@ centos                latest              5182e96772bf        6 weeks ago       
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker-打包命令"><span class="nav-number">1.</span> <span class="nav-text">Docker 打包命令</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
