@@ -108,24 +108,24 @@
 
 
 
-  <meta name="description" content="https://blog.csdn.net/moliyiran/article/details/80890799 注意配置 php-ocnfig 路径">
+  <meta name="description" content="记录了CentOS7 安装python3.7.0的详细过程，供大家参考，具体内容如下 1.下载及解压 python3.7的安装包可从官网下载上传到主机，也可以用wget直接下载。 [root@yuioplvlinux-130 ~]# cd /usr/local/src/[root@yuioplvlinux-130 src]# wget https://www.python.org/ftp/pyth">
 <meta property="og:type" content="article">
-<meta property="og:title" content="php7.2安装php-redis扩展">
-<meta property="og:url" content="http://yoursite.com/2018/10/11/php7-2安装php-redis扩展/index.html">
+<meta property="og:title" content="Centos7 安装python3.7">
+<meta property="og:url" content="http://yoursite.com/2018/10/21/Centos7-安装python3-7/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="https://blog.csdn.net/moliyiran/article/details/80890799 注意配置 php-ocnfig 路径">
+<meta property="og:description" content="记录了CentOS7 安装python3.7.0的详细过程，供大家参考，具体内容如下 1.下载及解压 python3.7的安装包可从官网下载上传到主机，也可以用wget直接下载。 [root@yuioplvlinux-130 ~]# cd /usr/local/src/[root@yuioplvlinux-130 src]# wget https://www.python.org/ftp/pyth">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-11T12:12:59.000Z">
+<meta property="og:updated_time" content="2018-10-21T13:31:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="php7.2安装php-redis扩展">
-<meta name="twitter:description" content="https://blog.csdn.net/moliyiran/article/details/80890799 注意配置 php-ocnfig 路径">
+<meta name="twitter:title" content="Centos7 安装python3.7">
+<meta name="twitter:description" content="记录了CentOS7 安装python3.7.0的详细过程，供大家参考，具体内容如下 1.下载及解压 python3.7的安装包可从官网下载上传到主机，也可以用wget直接下载。 [root@yuioplvlinux-130 ~]# cd /usr/local/src/[root@yuioplvlinux-130 src]# wget https://www.python.org/ftp/pyth">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/11/php7-2安装php-redis扩展/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/21/Centos7-安装python3-7/"/>
 
 
 
@@ -135,7 +135,7 @@
   };
 </script>
 
-  <title>php7.2安装php-redis扩展 | Hexo</title>
+  <title>Centos7 安装python3.7 | Hexo</title>
   
 
 
@@ -280,7 +280,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/11/php7-2安装php-redis扩展/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/21/Centos7-安装python3-7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -297,7 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">php7.2安装php-redis扩展
+          <h1 class="post-title" itemprop="name headline">Centos7 安装python3.7
               
             
           </h1>
@@ -322,7 +322,7 @@
                 
               
 
-              <time title="Created: 2018-10-11 20:10:29 / Modified: 20:12:59" itemprop="dateCreated datePublished" datetime="2018-10-11T20:10:29+08:00">2018-10-11</time>
+              <time title="Created: 2018-10-21 21:28:37 / Modified: 21:31:56" itemprop="dateCreated datePublished" datetime="2018-10-21T21:28:37+08:00">2018-10-21</time>
             
 
             
@@ -360,8 +360,38 @@
       
 
       
-        <p><a href="https://blog.csdn.net/moliyiran/article/details/80890799" target="_blank" rel="noopener">https://blog.csdn.net/moliyiran/article/details/80890799</a></p>
-<p>注意配置 php-ocnfig 路径</p>
+        <p>记录了CentOS7 安装python3.7.0的详细过程，供大家参考，具体内容如下</p>
+<p>1.下载及解压</p>
+<p>python3.7的安装包可从官网下载上传到主机，也可以用wget直接下载。</p>
+<p>[root@yuioplvlinux-130 ~]# cd /usr/local/src/<br>[root@yuioplvlinux-130 src]# wget <a href="https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz" target="_blank" rel="noopener">https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz</a><br>[root@yuioplvlinux-130 src]# tar xvJf Python-3.7.0.tar.xz<br>[root@yuioplvlinux-130 src]# mv Python-3.7.0 /usr/local/python-3.7<br>[root@yuioplvlinux-130 src]# cd /usr/local/python-3.7/<br>2.安装</p>
+<p>安装之前，首先安装两个python依赖的包；</p>
+<p>[root@yuioplvlinux-130 python-3.7]# yum -y install zlib* libffi-devel<br>配置编辑参数；</p>
+<p>[root@yuioplvlinux-130 python-3.7]# ./configure –prefix=/usr/local/sbin/python-3.7<br>然后编译和安装：“make”、“make install”；</p>
+<p>安装完成后，若出现以下两行，说明安装成功；</p>
+<p>Installing collected packages: setuptools, pip<br>Successfully installed pip-10.0.1 setuptools-39.0.1<br>也可以用“echo $?”查看，结果为0说明安装成功；</p>
+<p>然后就可以使用python3了。</p>
+<p>[root@yuioplvlinux-130 python-3.7]# /usr/local/sbin/python-3.7/bin/python3<br>Python 3.7.0 (default, Jul 21 2018, 13:45:48)<br>[GCC 4.8.5 20150623 (Red Hat 4.8.5-28)] on linux<br>Type “help”, “copyright”, “credits” or “license” for more information.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+<p>可以看到，虽然成功安装了python3.7，但是执行起来命令特别长，可以把python命令指向到到python3。</p>
+</blockquote>
+</blockquote>
+<p>首先查看python命令的绝对路径，可以看到它是通过软链接执行到python2.7的。</p>
+<p>[root@yuioplvlinux-130 ~]# python -V #查看python的默认版本<br>Python 2.7.5<br>[root@yuioplvlinux-130 ~]# which python #查看python命令的绝对路径<br>/usr/bin/python<br>[root@yuioplvlinux-130 ~]# ll /usr/bin/ |grep python<br>lrwxrwxrwx. 1 root root   7 7月 15 19:58 python -&gt; python2<br>lrwxrwxrwx. 1 root root   9 7月 15 19:58 python2 -&gt; python2.7<br>-rwxr-xr-x. 1 root root  7136 8月 4 2017 python2.7<br>那我们也可以做一个软链接指向到python3命令。</p>
+<p>[root@yuioplvlinux-130 ~]# rm -rf /usr/bin/python #删除原有的软链接文件<br>[root@yuioplvlinux-130 ~]# ln -s /usr/local/sbin/python-3.7/bin/python3 /usr/bin/python<br>[root@yuioplvlinux-130 ~]# ll /usr/bin/ |grep python<br>lrwxrwxrwx. 1 root root  38 7月 21 14:18 python -&gt; /usr/local/sbin/python-3.7/bin/python3<br>lrwxrwxrwx. 1 root root   9 7月 15 19:58 python2 -&gt; python2.7<br>-rwxr-xr-x. 1 root root  7136 8月 4 2017 python2.7<br>现在python的默认版本就是python 3.7.0了。</p>
+<p>[root@yuioplvlinux-130 ~]# python -V<br>Python 3.7.0<br>[root@yuioplvlinux-130 ~]# python<br>Python 3.7.0 (default, Jul 21 2018, 13:45:48)<br>[GCC 4.8.5 20150623 (Red Hat 4.8.5-28)] on linux<br>Type “help”, “copyright”, “credits” or “license” for more information.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<h6 id="修改完python的默认版本后，会存在一个问题，无法执行yum命令，修改yum命令文件，将头文件改为python2-7即可。"><a href="#修改完python的默认版本后，会存在一个问题，无法执行yum命令，修改yum命令文件，将头文件改为python2-7即可。" class="headerlink" title="修改完python的默认版本后，会存在一个问题，无法执行yum命令，修改yum命令文件，将头文件改为python2.7即可。"></a>修改完python的默认版本后，会存在一个问题，无法执行yum命令，修改yum命令文件，将头文件改为python2.7即可。</h6><p>[root@yuioplvlinux-130 ~]# vim /usr/bin/yum</p>
+<p>#!/usr/bin/python2.7 #将头文件改为python2.7<br>同样的，将pip也指向到python3.7。</p>
+<p>[root@yuioplvlinux-130 ~]# ln -s /usr/local/sbin/python-3.7/bin/pip3 /usr/bin/pip<br>[root@yuioplvlinux-130 ~]# pip –version<br>pip 10.0.1 from /usr/local/sbin/python-3.7/lib/python3.7/site-packages/pip (python 3.7)</p>
+<p>完成！</p>
 
       
     </div>
@@ -389,8 +419,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/05/docker-搭建开发环境/" rel="next" title="docker 搭建开发环境">
-                <i class="fa fa-chevron-left"></i> docker 搭建开发环境
+              <a href="/2018/10/21/docker-的正确启动方式/" rel="next" title="docker 的正确启动方式-特权模式">
+                <i class="fa fa-chevron-left"></i> docker 的正确启动方式-特权模式
               </a>
             
           </div>
@@ -398,10 +428,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/21/docker-的正确启动方式/" rel="prev" title="docker 的正确启动方式-特权模式">
-                docker 的正确启动方式-特权模式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -446,8 +472,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -492,6 +527,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#修改完python的默认版本后，会存在一个问题，无法执行yum命令，修改yum命令文件，将头文件改为python2-7即可。"><span class="nav-number">1.</span> <span class="nav-text">修改完python的默认版本后，会存在一个问题，无法执行yum命令，修改yum命令文件，将头文件改为python2.7即可。</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
