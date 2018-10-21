@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="特权模式运行docker 容器有的需要用到systeml 会显示权限不够 Failed to get D-Bus connection: Operation not permitted 解决方案： 1,创建容器1sudo docker run -d -p 12000:80 -p 12001:3306 -p 12002:22 -v /Users/Django/www:/data/www --name">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-21T09:48:38.000Z">
+<meta property="og:updated_time" content="2018-10-21T09:49:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker 的正确启动方式-特权模式">
 <meta name="twitter:description" content="特权模式运行docker 容器有的需要用到systeml 会显示权限不够 Failed to get D-Bus connection: Operation not permitted 解决方案： 1,创建容器1sudo docker run -d -p 12000:80 -p 12001:3306 -p 12002:22 -v /Users/Django/www:/data/www --name">
@@ -322,7 +322,7 @@
                 
               
 
-              <time title="Created: 2018-10-21 17:43:20 / Modified: 17:48:38" itemprop="dateCreated datePublished" datetime="2018-10-21T17:43:20+08:00">2018-10-21</time>
+              <time title="Created: 2018-10-21 17:43:20 / Modified: 17:49:49" itemprop="dateCreated datePublished" datetime="2018-10-21T17:43:20+08:00">2018-10-21</time>
             
 
             
@@ -365,7 +365,7 @@
 </code></pre><p>解决方案：</p>
 <p>1,创建容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -d -p 12000:80 -p 12001:3306 -p 12002:22 -v /Users/Django/www:/data/www --name centos-web1 --privileged=true  jangozw/centos-web  /usr/sbin/init</span><br></pre></td></tr></table></figure></p>
 <p>2,进入容器</p>
-<pre><code>docker exec -it centos7 /bin/bash
+<pre><code>docker exec -it centos-web1 /bin/bash
 </code></pre><p>执行这2步就可以使用systemctl启动服务了，不一会报上错</p>
 <h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>Docker的设计理念是在容器里面不运行后台服务，容器本身就是宿主机上的一个独立的主进程，也可以间接的理解为就是容器里运行服务的应用进程。一个容器的生命周期是围绕这个主进程存在的，所以正确的使用容器方法是将里面的服务运行在前台。</p>
 <p>再说到systemd，这个套件已经成为主流Linux发行版（比如CentOS7、Ubuntu14+）默认的服务管理，取代了传统的SystemV风格服务管理。systemd维护系统服务程序，它需要特权去会访问Linux内核。而容器并不是一个完整的操作系统，只有一个文件系统，而且默认启动只是普通用户这样的权限访问Linux内核，也就是没有特权，所以自然就用不了！</p>
