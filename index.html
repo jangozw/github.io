@@ -277,6 +277,162 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/19/给python-安装itchat-库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/19/给python-安装itchat-库/" itemprop="url">
+                  给python 安装itchat 库
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-12-19 22:50:40 / Modified: 23:16:07" itemprop="dateCreated datePublished" datetime="2018-12-19T22:50:40+08:00">2018-12-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="这个应该结合上一个安装python的帖子一起看，最好安装时候给解决掉"><a href="#这个应该结合上一个安装python的帖子一起看，最好安装时候给解决掉" class="headerlink" title="这个应该结合上一个安装python的帖子一起看，最好安装时候给解决掉"></a>这个应该结合上一个安装python的帖子一起看，最好安装时候给解决掉</h1><h3 id="安装命令"><a href="#安装命令" class="headerlink" title="安装命令:"></a>安装命令:</h3><p>[root@1ecde053bfc2 python-3.7]# pip install itchat</p>
+<h3 id="遇到问题："><a href="#遇到问题：" class="headerlink" title="遇到问题："></a>遇到问题：</h3><p><img src="/images/pasted-7.png" alt="upload successful"></p>
+<p>原因：<br>需要先安装ssl</p>
+<h3 id="解决步骤："><a href="#解决步骤：" class="headerlink" title="解决步骤："></a>解决步骤：</h3><p>1，查看openssl 是否安装</p>
+<p>[root@localhost ~]# rpm -aq|grep openssl </p>
+<p>yum安装openssl-devel </p>
+<p>[root@localhost ~]# yum install openssl-devel -y </p>
+<p>执行注意看结果，如果有报错说某个py文件语法错误，很可能是解释头不对，<br>因为我们安装时候用python 高版本 替换了自带的python2.7。而那个文件需要用2.7的解释头。所以就去那个文件修改下头文件即可，<br>比如：vi /usr/libexec/urlgrabber-ext-down</p>
+<p><img src="/images/pasted-10.png" alt="upload successful"></p>
+<p>然后重新执行yum install openssl-devel -y  即可</p>
+<p>2， 重新编译安装 python</p>
+<p>./configure –prefix=/usr/local/sbin/python-3.7 –with-ssl</p>
+<p>make &amp;&amp; make install</p>
+<p>安装完成后重新执行</p>
+<p>[root@1ecde053bfc2 python-3.7]# pip install itchat</p>
+<p>然后发现问题已经解决：</p>
+<p><img src="/images/pasted-15.png" alt="upload successful"></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/21/Centos7-安装python3-7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -323,12 +479,24 @@
                 
               
 
-              <time title="Created: 2018-10-21 21:28:37 / Modified: 21:33:21" itemprop="dateCreated datePublished" datetime="2018-10-21T21:28:37+08:00">2018-10-21</time>
+              <time title="Created: 2018-10-21 21:28:37" itemprop="dateCreated datePublished" datetime="2018-10-21T21:28:37+08:00">2018-10-21</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-12-19 22:49:52" itemprop="dateModified" datetime="2018-12-19T22:49:52+08:00">2018-12-19</time>
               
             
           </span>
@@ -393,7 +561,7 @@
 </blockquote>
 <h4 id="修改完python的默认版本后，会存在一个问题，无法执行yum命令，修改yum命令文件，将头文件改为python2-7即可。"><a href="#修改完python的默认版本后，会存在一个问题，无法执行yum命令，修改yum命令文件，将头文件改为python2-7即可。" class="headerlink" title="修改完python的默认版本后，会存在一个问题，无法执行yum命令，修改yum命令文件，将头文件改为python2.7即可。"></a>修改完python的默认版本后，会存在一个问题，无法执行yum命令，修改yum命令文件，将头文件改为python2.7即可。</h4><p>[root@yuioplvlinux-130 ~]# vim /usr/bin/yum</p>
 <p>#!/usr/bin/python2.7 #将头文件改为python2.7<br>同样的，将pip也指向到python3.7。</p>
-<p>[root@yuioplvlinux-130 ~]# ln -s /usr/local/sbin/python-3.7/bin/pip3 /usr/bin/pip<br>[root@yuioplvlinux-130 ~]# pip –version<br>pip 10.0.1 from /usr/local/sbin/python-3.7/lib/python3.7/site-packages/pip (python 3.7)</p>
+<p>[root@yuioplvlinux-130 ~]# rm -rf /usr/bin/pip #删除原有的软链接文件<br>[root@yuioplvlinux-130 ~]# ln -s /usr/local/sbin/python-3.7/bin/pip3 /usr/bin/pip<br>[root@yuioplvlinux-130 ~]# pip –version<br>pip 10.0.1 from /usr/local/sbin/python-3.7/lib/python3.7/site-packages/pip (python 3.7)</p>
 <p>完成！</p>
 
           
@@ -1784,7 +1952,7 @@ Or, if you don&apos;t want/need a background service you can just run:
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

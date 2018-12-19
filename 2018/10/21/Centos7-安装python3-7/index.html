@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="记录了CentOS7 安装python3.7.0的详细过程，供大家参考，具体内容如下 1.下载及解压 python3.7的安装包可从官网下载上传到主机，也可以用wget直接下载。 [root@yuioplvlinux-130 ~]# cd /usr/local/src/[root@yuioplvlinux-130 src]# wget https://www.python.org/ftp/pyth">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-21T13:33:21.000Z">
+<meta property="og:updated_time" content="2018-12-19T14:49:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Centos7 安装python3.7">
 <meta name="twitter:description" content="记录了CentOS7 安装python3.7.0的详细过程，供大家参考，具体内容如下 1.下载及解压 python3.7的安装包可从官网下载上传到主机，也可以用wget直接下载。 [root@yuioplvlinux-130 ~]# cd /usr/local/src/[root@yuioplvlinux-130 src]# wget https://www.python.org/ftp/pyth">
@@ -322,12 +322,24 @@
                 
               
 
-              <time title="Created: 2018-10-21 21:28:37 / Modified: 21:33:21" itemprop="dateCreated datePublished" datetime="2018-10-21T21:28:37+08:00">2018-10-21</time>
+              <time title="Created: 2018-10-21 21:28:37" itemprop="dateCreated datePublished" datetime="2018-10-21T21:28:37+08:00">2018-10-21</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-12-19 22:49:52" itemprop="dateModified" datetime="2018-12-19T22:49:52+08:00">2018-12-19</time>
               
             
           </span>
@@ -390,7 +402,7 @@
 </blockquote>
 <h4 id="修改完python的默认版本后，会存在一个问题，无法执行yum命令，修改yum命令文件，将头文件改为python2-7即可。"><a href="#修改完python的默认版本后，会存在一个问题，无法执行yum命令，修改yum命令文件，将头文件改为python2-7即可。" class="headerlink" title="修改完python的默认版本后，会存在一个问题，无法执行yum命令，修改yum命令文件，将头文件改为python2.7即可。"></a>修改完python的默认版本后，会存在一个问题，无法执行yum命令，修改yum命令文件，将头文件改为python2.7即可。</h4><p>[root@yuioplvlinux-130 ~]# vim /usr/bin/yum</p>
 <p>#!/usr/bin/python2.7 #将头文件改为python2.7<br>同样的，将pip也指向到python3.7。</p>
-<p>[root@yuioplvlinux-130 ~]# ln -s /usr/local/sbin/python-3.7/bin/pip3 /usr/bin/pip<br>[root@yuioplvlinux-130 ~]# pip –version<br>pip 10.0.1 from /usr/local/sbin/python-3.7/lib/python3.7/site-packages/pip (python 3.7)</p>
+<p>[root@yuioplvlinux-130 ~]# rm -rf /usr/bin/pip #删除原有的软链接文件<br>[root@yuioplvlinux-130 ~]# ln -s /usr/local/sbin/python-3.7/bin/pip3 /usr/bin/pip<br>[root@yuioplvlinux-130 ~]# pip –version<br>pip 10.0.1 from /usr/local/sbin/python-3.7/lib/python3.7/site-packages/pip (python 3.7)</p>
 <p>完成！</p>
 
       
@@ -428,6 +440,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/19/给python-安装itchat-库/" rel="prev" title="给python 安装itchat 库">
+                给python 安装itchat 库 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -497,7 +513,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

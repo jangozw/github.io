@@ -108,24 +108,28 @@
 
 
 
-  <meta name="description" content="特权模式运行docker 容器有的需要用到systeml 会显示权限不够 Failed to get D-Bus connection: Operation not permitted 解决方案： 1,创建容器1sudo docker run -d -p 12000:80 -p 12001:3306 -p 12002:22 -v /Users/Django/www:/data/www --name">
+  <meta name="description" content="这个应该结合上一个安装python的帖子一起看，最好安装时候给解决掉安装命令:[root@1ecde053bfc2 python-3.7]# pip install itchat 遇到问题： 原因：需要先安装ssl 解决步骤：1，查看openssl 是否安装 [root@localhost ~]# rpm -aq|grep openssl  yum安装openssl-devel  [root@lo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker 的正确启动方式-特权模式">
-<meta property="og:url" content="http://yoursite.com/2018/10/21/docker-的正确启动方式/index.html">
+<meta property="og:title" content="给python 安装itchat 库">
+<meta property="og:url" content="http://yoursite.com/2018/12/19/给python-安装itchat-库/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="特权模式运行docker 容器有的需要用到systeml 会显示权限不够 Failed to get D-Bus connection: Operation not permitted 解决方案： 1,创建容器1sudo docker run -d -p 12000:80 -p 12001:3306 -p 12002:22 -v /Users/Django/www:/data/www --name">
+<meta property="og:description" content="这个应该结合上一个安装python的帖子一起看，最好安装时候给解决掉安装命令:[root@1ecde053bfc2 python-3.7]# pip install itchat 遇到问题： 原因：需要先安装ssl 解决步骤：1，查看openssl 是否安装 [root@localhost ~]# rpm -aq|grep openssl  yum安装openssl-devel  [root@lo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-21T13:28:09.000Z">
+<meta property="og:image" content="http://yoursite.com/images/pasted-7.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-10.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-15.png">
+<meta property="og:updated_time" content="2018-12-19T15:16:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="docker 的正确启动方式-特权模式">
-<meta name="twitter:description" content="特权模式运行docker 容器有的需要用到systeml 会显示权限不够 Failed to get D-Bus connection: Operation not permitted 解决方案： 1,创建容器1sudo docker run -d -p 12000:80 -p 12001:3306 -p 12002:22 -v /Users/Django/www:/data/www --name">
+<meta name="twitter:title" content="给python 安装itchat 库">
+<meta name="twitter:description" content="这个应该结合上一个安装python的帖子一起看，最好安装时候给解决掉安装命令:[root@1ecde053bfc2 python-3.7]# pip install itchat 遇到问题： 原因：需要先安装ssl 解决步骤：1，查看openssl 是否安装 [root@localhost ~]# rpm -aq|grep openssl  yum安装openssl-devel  [root@lo">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-7.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/21/docker-的正确启动方式/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/12/19/给python-安装itchat-库/"/>
 
 
 
@@ -135,7 +139,7 @@
   };
 </script>
 
-  <title>docker 的正确启动方式-特权模式 | Hexo</title>
+  <title>给python 安装itchat 库 | Hexo</title>
   
 
 
@@ -280,7 +284,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/21/docker-的正确启动方式/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/19/给python-安装itchat-库/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -297,7 +301,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">docker 的正确启动方式-特权模式
+          <h1 class="post-title" itemprop="name headline">给python 安装itchat 库
               
             
           </h1>
@@ -322,7 +326,7 @@
                 
               
 
-              <time title="Created: 2018-10-21 17:43:20 / Modified: 21:28:09" itemprop="dateCreated datePublished" datetime="2018-10-21T17:43:20+08:00">2018-10-21</time>
+              <time title="Created: 2018-12-19 22:50:40 / Modified: 23:16:07" itemprop="dateCreated datePublished" datetime="2018-12-19T22:50:40+08:00">2018-12-19</time>
             
 
             
@@ -360,18 +364,23 @@
       
 
       
-        <h4 id="特权模式运行"><a href="#特权模式运行" class="headerlink" title="特权模式运行"></a>特权模式运行</h4><p>docker 容器有的需要用到systeml 会显示权限不够</p>
-<pre><code>Failed to get D-Bus connection: Operation not permitted
-</code></pre><p>解决方案：</p>
-<p>1,创建容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -d -p 12000:80 -p 12001:3306 -p 12002:22 -v /Users/Django/www:/data/www --name centos-web1 --privileged=true  jangozw/centos-web  /usr/sbin/init</span><br></pre></td></tr></table></figure></p>
-<p>2,进入容器</p>
-<pre><code>docker exec -it centos-web1 /bin/bash
-</code></pre><p>执行这2步就可以使用systemctl启动服务了，不一会报上错</p>
-<h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>Docker的设计理念是在容器里面不运行后台服务，容器本身就是宿主机上的一个独立的主进程，也可以间接的理解为就是容器里运行服务的应用进程。一个容器的生命周期是围绕这个主进程存在的，所以正确的使用容器方法是将里面的服务运行在前台。</p>
-<p>再说到systemd，这个套件已经成为主流Linux发行版（比如CentOS7、Ubuntu14+）默认的服务管理，取代了传统的SystemV风格服务管理。systemd维护系统服务程序，它需要特权去会访问Linux内核。而容器并不是一个完整的操作系统，只有一个文件系统，而且默认启动只是普通用户这样的权限访问Linux内核，也就是没有特权，所以自然就用不了！</p>
-<p>因此，请遵守容器设计原则，一个容器里运行一个前台服务！</p>
-<p>我就想这样运行，难道解决不了吗？</p>
-<p>答：可以，以特权模式运行容器。</p>
+        <h1 id="这个应该结合上一个安装python的帖子一起看，最好安装时候给解决掉"><a href="#这个应该结合上一个安装python的帖子一起看，最好安装时候给解决掉" class="headerlink" title="这个应该结合上一个安装python的帖子一起看，最好安装时候给解决掉"></a>这个应该结合上一个安装python的帖子一起看，最好安装时候给解决掉</h1><h3 id="安装命令"><a href="#安装命令" class="headerlink" title="安装命令:"></a>安装命令:</h3><p>[root@1ecde053bfc2 python-3.7]# pip install itchat</p>
+<h3 id="遇到问题："><a href="#遇到问题：" class="headerlink" title="遇到问题："></a>遇到问题：</h3><p><img src="/images/pasted-7.png" alt="upload successful"></p>
+<p>原因：<br>需要先安装ssl</p>
+<h3 id="解决步骤："><a href="#解决步骤：" class="headerlink" title="解决步骤："></a>解决步骤：</h3><p>1，查看openssl 是否安装</p>
+<p>[root@localhost ~]# rpm -aq|grep openssl </p>
+<p>yum安装openssl-devel </p>
+<p>[root@localhost ~]# yum install openssl-devel -y </p>
+<p>执行注意看结果，如果有报错说某个py文件语法错误，很可能是解释头不对，<br>因为我们安装时候用python 高版本 替换了自带的python2.7。而那个文件需要用2.7的解释头。所以就去那个文件修改下头文件即可，<br>比如：vi /usr/libexec/urlgrabber-ext-down</p>
+<p><img src="/images/pasted-10.png" alt="upload successful"></p>
+<p>然后重新执行yum install openssl-devel -y  即可</p>
+<p>2， 重新编译安装 python</p>
+<p>./configure –prefix=/usr/local/sbin/python-3.7 –with-ssl</p>
+<p>make &amp;&amp; make install</p>
+<p>安装完成后重新执行</p>
+<p>[root@1ecde053bfc2 python-3.7]# pip install itchat</p>
+<p>然后发现问题已经解决：</p>
+<p><img src="/images/pasted-15.png" alt="upload successful"></p>
 
       
     </div>
@@ -399,8 +408,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/11/php7-2安装php-redis扩展/" rel="next" title="php7.2安装php-redis扩展">
-                <i class="fa fa-chevron-left"></i> php7.2安装php-redis扩展
+              <a href="/2018/10/21/Centos7-安装python3-7/" rel="next" title="Centos7 安装python3.7">
+                <i class="fa fa-chevron-left"></i> Centos7 安装python3.7
               </a>
             
           </div>
@@ -408,10 +417,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/21/Centos7-安装python3-7/" rel="prev" title="Centos7 安装python3.7">
-                Centos7 安装python3.7 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -521,7 +526,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#特权模式运行"><span class="nav-number">1.</span> <span class="nav-text">特权模式运行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原因"><span class="nav-number">2.</span> <span class="nav-text">原因</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#这个应该结合上一个安装python的帖子一起看，最好安装时候给解决掉"><span class="nav-number">1.</span> <span class="nav-text">这个应该结合上一个安装python的帖子一起看，最好安装时候给解决掉</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装命令"><span class="nav-number">1.0.1.</span> <span class="nav-text">安装命令:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遇到问题："><span class="nav-number">1.0.2.</span> <span class="nav-text">遇到问题：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决步骤："><span class="nav-number">1.0.3.</span> <span class="nav-text">解决步骤：</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
