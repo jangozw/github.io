@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Docker 打包命令拉取镜像 ⇒  docker pull centos 创建容器 ⇒  sudo docker run -it --name myFirstCentos centos /bin/bash 查看容器 ⇒  docker ps -a CONTAINER ID        IMAGE               COMMAND                  CREATED">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-20T09:33:16.000Z">
+<meta property="og:updated_time" content="2018-12-19T15:30:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker 打包镜像">
 <meta name="twitter:description" content="Docker 打包命令拉取镜像 ⇒  docker pull centos 创建容器 ⇒  sudo docker run -it --name myFirstCentos centos /bin/bash 查看容器 ⇒  docker ps -a CONTAINER ID        IMAGE               COMMAND                  CREATED">
@@ -322,12 +322,24 @@
                 
               
 
-              <time title="Created: 2018-09-20 16:59:46 / Modified: 17:33:16" itemprop="dateCreated datePublished" datetime="2018-09-20T16:59:46+08:00">2018-09-20</time>
+              <time title="Created: 2018-09-20 16:59:46" itemprop="dateCreated datePublished" datetime="2018-09-20T16:59:46+08:00">2018-09-20</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-12-19 23:30:49" itemprop="dateModified" datetime="2018-12-19T23:30:49+08:00">2018-12-19</time>
               
             
           </span>
@@ -379,14 +391,12 @@ myFirstCentos
     [root@4da46cd0a26a tmp]# ls
     ks-script-Lu6hIQ  test.txt  yum.log
     [root@4da46cd0a26a tmp]# exit
-</code></pre><p>提交修改</p>
-<pre><code>⇒  docker commit 4da46cd0a26a jangozw/centos-test:v1
+</code></pre><h5 id="提交修改"><a href="#提交修改" class="headerlink" title="提交修改"></a>提交修改</h5><pre><code>⇒  docker commit 4da46cd0a26a jangozw/centos-test:v1
 sha256:783ce3eaff7129a839cc67cf6bd88b6effc9ac6f9b2a36e5508c07d6666e1cd1
 ⇒
 </code></pre><p>登陆docker </p>
 <pre><code>⇒ docker login (执行会让你输入用户名密码)
-</code></pre><p>推送到hub.docker    </p>
-<pre><code>⇒  docker push jangozw/centos-test:v1
+</code></pre><h5 id="推送到hub-docker"><a href="#推送到hub-docker" class="headerlink" title="推送到hub.docker"></a>推送到hub.docker</h5><pre><code>⇒  docker push jangozw/centos-test:v1
 The push refers to repository [docker.io/jangozw/centos-test]
 0b2b943ab4e1: Pushed
 1d31b5806ba4: Mounted from jangozw/centos-lnmp
@@ -554,7 +564,7 @@ centos                latest              5182e96772bf        6 weeks ago       
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker-打包命令"><span class="nav-number">1.</span> <span class="nav-text">Docker 打包命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker-打包命令"><span class="nav-number">1.</span> <span class="nav-text">Docker 打包命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#提交修改"><span class="nav-number">1.1.</span> <span class="nav-text">提交修改</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#推送到hub-docker"><span class="nav-number">1.2.</span> <span class="nav-text">推送到hub.docker</span></a></li></ol></li></ol></div>
             
 
           </div>
