@@ -108,24 +108,24 @@
 
 
 
-  <meta name="description" content="命令12345678sudo docker run -itd -p 12000:80 -p 12001:3306 -p 12002:22 -v /Users/Django/www:/data/www  --name centos-web jangozw/centos-web /bin/bash注：命令执行要写成一样的，这里为了显示换行 命令解释在后台开启一个docker容器，镜像是已经保存过的 j">
+  <meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344/**	切片学习，很拐弯抹角丧心病狂	切片是对原数组的指针引用，只有到扩充切片超过了其本身的长度时候，这个切片就成了一个新数组，跟原数组断绝了关系 	追加的原则是新加的一个元素用切片的最后一个元素在原数组的下标中后移一位，如果存在就改变原数组">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker 搭建开发环境">
-<meta property="og:url" content="http://yoursite.com/2018/10/05/docker-搭建开发环境/index.html">
+<meta property="og:title" content="go 语言切片">
+<meta property="og:url" content="http://yoursite.com/2019/01/30/go-语言切片/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="命令12345678sudo docker run -itd -p 12000:80 -p 12001:3306 -p 12002:22 -v /Users/Django/www:/data/www  --name centos-web jangozw/centos-web /bin/bash注：命令执行要写成一样的，这里为了显示换行 命令解释在后台开启一个docker容器，镜像是已经保存过的 j">
+<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344/**	切片学习，很拐弯抹角丧心病狂	切片是对原数组的指针引用，只有到扩充切片超过了其本身的长度时候，这个切片就成了一个新数组，跟原数组断绝了关系 	追加的原则是新加的一个元素用切片的最后一个元素在原数组的下标中后移一位，如果存在就改变原数组">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-11T12:57:33.000Z">
+<meta property="og:updated_time" content="2019-01-30T03:52:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="docker 搭建开发环境">
-<meta name="twitter:description" content="命令12345678sudo docker run -itd -p 12000:80 -p 12001:3306 -p 12002:22 -v /Users/Django/www:/data/www  --name centos-web jangozw/centos-web /bin/bash注：命令执行要写成一样的，这里为了显示换行 命令解释在后台开启一个docker容器，镜像是已经保存过的 j">
+<meta name="twitter:title" content="go 语言切片">
+<meta name="twitter:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344/**	切片学习，很拐弯抹角丧心病狂	切片是对原数组的指针引用，只有到扩充切片超过了其本身的长度时候，这个切片就成了一个新数组，跟原数组断绝了关系 	追加的原则是新加的一个元素用切片的最后一个元素在原数组的下标中后移一位，如果存在就改变原数组">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/05/docker-搭建开发环境/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/01/30/go-语言切片/"/>
 
 
 
@@ -135,7 +135,7 @@
   };
 </script>
 
-  <title>docker 搭建开发环境 | Hexo</title>
+  <title>go 语言切片 | Hexo</title>
   
 
 
@@ -280,7 +280,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/05/docker-搭建开发环境/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/30/go-语言切片/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -297,7 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">docker 搭建开发环境
+          <h1 class="post-title" itemprop="name headline">go 语言切片
               
             
           </h1>
@@ -322,24 +322,12 @@
                 
               
 
-              <time title="Created: 2018-10-05 21:17:12" itemprop="dateCreated datePublished" datetime="2018-10-05T21:17:12+08:00">2018-10-05</time>
+              <time title="Created: 2019-01-30 11:52:07 / Modified: 11:52:52" itemprop="dateCreated datePublished" datetime="2019-01-30T11:52:07+08:00">2019-01-30</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-10-11 20:57:33" itemprop="dateModified" datetime="2018-10-11T20:57:33+08:00">2018-10-11</time>
               
             
           </span>
@@ -372,17 +360,7 @@
       
 
       
-        <h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -itd </span><br><span class="line">-p 12000:80 </span><br><span class="line">-p 12001:3306 </span><br><span class="line">-p 12002:22 </span><br><span class="line">-v /Users/Django/www:/data/www  </span><br><span class="line">--name centos-web jangozw/centos-web /bin/bash</span><br><span class="line"></span><br><span class="line">注：命令执行要写成一样的，这里为了显示换行</span><br></pre></td></tr></table></figure>
-<h3 id="命令解释"><a href="#命令解释" class="headerlink" title="命令解释"></a>命令解释</h3><p>在后台开启一个docker容器，镜像是已经保存过的 jangozw/centos-web.<br>-p 设置端口映射，将宿主机的端口 映射到容器的端口，相当于在宿主机访问这个端口就到了容器里面。如上我将12000端口映射到80，意思是宿主机的12000端口访问直接到里容器的nginx服务器，也可以两边端口一样的。</p>
-<p>-v 是自动同步，将宿主机的某个目录同步拷贝到容器里的路径，中间用冒号隔开。比如说项目文件肯定在宿主机的，这时候做个同步很实用。</p>
-<h3 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h3><p>在容器里安装好php，nginx 环境，配置nginx server，hosts，还有上面命令里的目录 按照独立主机方式配置就行，没什么特别注意的，最后要将容器的修改提交保存，这不能忘。如果run后发现参数不对，就docker rm 容器名 ,删除容器，在重新docker run 就好了，记得一定要docker commit</p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>执行上面命令，获得容器id，进入容器，开启nginx，php-fpm 进程。</p>
-<p>浏览器访问：</p>
-<pre><code>localhost:12000 
-</code></pre><p>发现已经访问到了容器里的文件，这就对了，不对就重新按照上面步骤检查</p>
-<h3 id="提醒"><a href="#提醒" class="headerlink" title="提醒"></a>提醒</h3><p>在容器里的一切操作，不想丢的话，一定要commit，push保存，很容易忘记。</p>
-<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>docker 容器设置开机启动服务，折腾失败，然后写脚本手动执行的。每次启动容器 /etc/hosts 文件都会被清掉，但这个不影响，可以直接宿主机hosts</p>
-
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line">	切片学习，很拐弯抹角丧心病狂</span><br><span class="line">	切片是对原数组的指针引用，只有到扩充切片超过了其本身的长度时候，这个切片就成了一个新数组，跟原数组断绝了关系</span><br><span class="line"> 	追加的原则是新加的一个元素用切片的最后一个元素在原数组的下标中后移一位，如果存在就改变原数组的，不存在说明超出了原数组，则新建s1的数组解除对原数组的映射</span><br><span class="line"> */</span><br><span class="line">func sliceTest()  &#123;</span><br><span class="line">	arr := [...]int&#123;1,2,3,4,5&#125;</span><br><span class="line">	s := arr[:] //[1 2 3 4 5] 取所有</span><br><span class="line">	s1 := arr[2:3] //[3]  切取arr 中第2个到第3个元素，左开右闭,即不包含第三个元素</span><br><span class="line">	fmt.Println(s)</span><br><span class="line">	fmt.Println(s1)</span><br><span class="line">	fmt.Println(s1[0])//3 s1中只有一个元素3下标为0,即其母体数组中下标为2的元素</span><br><span class="line"></span><br><span class="line">	//改变原数组的值</span><br><span class="line">	arr[2] = 100</span><br><span class="line">	fmt.Println(arr) // [1 2 100 4 5]</span><br><span class="line">	fmt.Println(s) // [1 2 100 4 5]</span><br><span class="line">	fmt.Println(s1) // [100]</span><br><span class="line"></span><br><span class="line">	//改变切片里的值</span><br><span class="line">	s[0] = 200</span><br><span class="line">	fmt.Println(arr)//[200 2 100 4 5]</span><br><span class="line">	fmt.Println(s)//[200 2 100 4 5]</span><br><span class="line">	fmt.Println(s1)//[100]  可以看出改变一个切片里的值，与其他切片没关系</span><br><span class="line"></span><br><span class="line">	//超出切片长度可以改变其值么？不可以</span><br><span class="line">	//s1[2] = 300 //报错，因为s1只有一个下标为0的元素，不存在下标为2的无法赋值</span><br><span class="line"></span><br><span class="line">	//对切片的动态追加元素</span><br><span class="line">	fmt.Println(s1)</span><br><span class="line">	s1 = append(s1, 500)// 追加前s1中最大的下标是0, 其原数组对应下标为2最大为4，追加一个元素s1中多了一个下标为1的元素且原数组下标为3的值会变</span><br><span class="line">	s1 = append(s1, 500)// 追加前s1中最大的下标是1, 其原数组对应下标为3最大为4，追加一个元素s1中多了一个下标为2的元素且原数组下标为4的值会变</span><br><span class="line"></span><br><span class="line">	// 追加前s1中最大的下标是2, 其原数组对应下标为4最大为4，追加一个元素s1中多了一个下标为3的元素且原数组不变,</span><br><span class="line">	// 因为此时s1 超出了原数组的范围,s1成了新数组,跟原数组没关系了</span><br><span class="line">	s1 = append(s1, 500)</span><br><span class="line">	s1 = append(s1, 500)//s1 超出了原数组，只会变s1</span><br><span class="line">	//追加的原则是新加的一个元素用切片的最后一个元素在原数组的下标中后移一位，如果存在就改变原数组的，不存在说明超出了原数组，则新建s1的数组解除对原数组的映射</span><br><span class="line"></span><br><span class="line">	fmt.Println(arr)</span><br><span class="line">	fmt.Println(s)</span><br><span class="line">	fmt.Println(s1)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -409,8 +387,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/21/hello-world/" rel="next" title="Hexo 手册">
-                <i class="fa fa-chevron-left"></i> Hexo 手册
+              <a href="/2019/01/28/docker-正确的commit和push/" rel="next" title="docker 正确的commit和push">
+                <i class="fa fa-chevron-left"></i> docker 正确的commit和push
               </a>
             
           </div>
@@ -418,10 +396,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/11/php7-2安装php-redis扩展/" rel="prev" title="php7.2安装php-redis扩展">
-                php7.2安装php-redis扩展 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -466,17 +440,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -521,22 +486,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#命令"><span class="nav-number">1.</span> <span class="nav-text">命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令解释"><span class="nav-number">2.</span> <span class="nav-text">命令解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装环境"><span class="nav-number">3.</span> <span class="nav-text">安装环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试"><span class="nav-number">4.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提醒"><span class="nav-number">5.</span> <span class="nav-text">提醒</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后记"><span class="nav-number">6.</span> <span class="nav-text">后记</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
