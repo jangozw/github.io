@@ -277,6 +277,538 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/21/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/21/hello-world/" itemprop="url">
+                  Hexo 手册
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-21 17:25:15" itemprop="dateCreated datePublished" datetime="2018-09-21T17:25:15+08:00">2018-09-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-11 20:09:39" itemprop="dateModified" datetime="2018-10-11T20:09:39+08:00">2018-10-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<h3 id="快速部署"><a href="#快速部署" class="headerlink" title="快速部署"></a>快速部署</h3><p>先安装hexo-admin 插件</p>
+<ul>
+<li><p>运行hexo </p>
+<pre><code>hexo s
+
+jangozw@jianggedeMacBook-Pro:~/www/hexoBlog2|
+</code></pre><p>⇒  hexo s<br>(node:38727) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.<br>INFO  Start processing<br>INFO  Hexo is running at <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> . Press Ctrl+C to stop.</p>
+</li>
+<li><p>访问<a href="http://localhost:4000/admin" target="_blank" rel="noopener">http://localhost:4000/admin</a> 编辑帖子</p>
+</li>
+<li><p>部署</p>
+<pre><code>hexo g &amp;&amp; hexo d 
+</code></pre></li>
+<li><p>仓库设置</p>
+<p>  _config.yml 配置</p>
+<pre><code>deploy:
+- type: git
+  repo: https://github.com/jangozw/github.io.git
+  branch: master
+
+- type: git
+  repo: root@59.110.219.135:/data/gitlibrary/blog
+  branch: master
+</code></pre></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/21/阿里云ssh登陆不上问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/21/阿里云ssh登陆不上问题/" itemprop="url">
+                  阿里云ssh登陆不上问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-21 17:12:10 / Modified: 17:23:27" itemprop="dateCreated datePublished" datetime="2018-09-21T17:12:10+08:00">2018-09-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><pre><code>⇒  ssh root@59.110.219.135
+ssh_exchange_identification: read: Connection reset by peer 
+</code></pre><p>   <img src="/images/pasted-3.png" alt="upload successful"></p>
+<h4 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h4><ul>
+<li><p>网上找答案</p>
+<p>  全是没卵用的</p>
+</li>
+<li><p>在阿里云提工单</p>
+<p>  完美解决，原因：这个可能是您的本地地址访问服务器较多，这边云盾认为有可能是攻击行为，所以将这个地址拦截了一段时间，这个添加白名单之后正常就不会有拦截了</p>
+<p>  解决方法：设置阿里云访问的白名单，白名单ip是自己本地的公网ip（可百度 本机ip 查询到）</p>
+<p>  设置白名单链接：<a href="https://yundun.console.aliyun.com/?p=sc#/sc/visitWhiteList" target="_blank" rel="noopener">https://yundun.console.aliyun.com/?p=sc#/sc/visitWhiteList</a></p>
+</li>
+</ul>
+<p><img src="/images/pasted-0.png" alt="upload successful"></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/20/docker-打包镜像/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/20/docker-打包镜像/" itemprop="url">
+                  docker 打包镜像
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-20 16:59:46" itemprop="dateCreated datePublished" datetime="2018-09-20T16:59:46+08:00">2018-09-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-12-19 23:30:49" itemprop="dateModified" datetime="2018-12-19T23:30:49+08:00">2018-12-19</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Docker-打包命令"><a href="#Docker-打包命令" class="headerlink" title="Docker 打包命令"></a>Docker 打包命令</h4><p>拉取镜像</p>
+<pre><code>⇒  docker pull centos
+</code></pre><p>创建容器</p>
+<pre><code>⇒  sudo docker run -it --name myFirstCentos centos /bin/bash
+</code></pre><p>查看容器</p>
+<pre><code>⇒  docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
+4da46cd0a26a        centos              &quot;/bin/bash&quot;              9 days ago          Exited (0) 40 minutes ago                       myFirstCentos
+</code></pre><p>启动容器</p>
+<pre><code>⇒  docker start myFirstCentos
+myFirstCentos
+</code></pre><p>进入容器 （添加test.txt）</p>
+<pre><code>⇒  docker attach myFirstCentos
+    [root@4da46cd0a26a /]# ls
+    bin  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+    [root@4da46cd0a26a /]# cd tmp/
+    [root@4da46cd0a26a tmp]# ls
+    ks-script-Lu6hIQ  test.txt  yum.log
+    [root@4da46cd0a26a tmp]# exit
+</code></pre><h5 id="提交修改"><a href="#提交修改" class="headerlink" title="提交修改"></a>提交修改</h5><pre><code>⇒  docker commit 4da46cd0a26a jangozw/centos-test:v1
+sha256:783ce3eaff7129a839cc67cf6bd88b6effc9ac6f9b2a36e5508c07d6666e1cd1
+⇒
+</code></pre><p>登陆docker </p>
+<pre><code>⇒ docker login (执行会让你输入用户名密码)
+</code></pre><h5 id="推送到hub-docker"><a href="#推送到hub-docker" class="headerlink" title="推送到hub.docker"></a>推送到hub.docker</h5><pre><code>⇒  docker push jangozw/centos-test:v1
+The push refers to repository [docker.io/jangozw/centos-test]
+0b2b943ab4e1: Pushed
+1d31b5806ba4: Mounted from jangozw/centos-lnmp
+v1: digest:         sha256:81651353f780acd8842be300ca9c0cdeea93f87ae016b76925cdbfd00562c984 size: 736
+⇒
+</code></pre><p>提交成功，查看镜像</p>
+<pre><code>⇒  docker images
+REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE
+jangozw/centos-test   v1                  783ce3eaff71        3 minutes ago       200MB
+jangozw/centos-lnmp   v1                  09d5dd7b4fd3        About an hour ago   200MB
+nginx                 latest              06144b287844        2 weeks ago         109MB
+centos                latest              5182e96772bf        6 weeks ago         200MB
+⇒
+</code></pre><p>在远程仓库查看</p>
+<pre><code>https://hub.docker.com 
+</code></pre><p>打包成功，这时候可以拉取自己的镜像了</p>
+<pre><code>⇒ docker pull jangozw/centos-test:v1 
+</code></pre><p>创建这个镜像的容器后发现 test.txt 在里面</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/10/linux-安装RabbitMq/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -642,7 +1174,7 @@ Or, if you don&apos;t want/need a background service you can just run:
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
