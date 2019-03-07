@@ -108,24 +108,29 @@
 
 
 
-  <meta name="description" content="1234567891011121314151617181920212223242526272829303132333435package mainimport &amp;quot;fmt&amp;quot;//go 没有继承的概念但有这种类似的操作，如下//定义接口以及如何实现这个接口，有点不容易理解，只要是一个struct实现了一个interface的所有方法就算实现了这个接口（继承）//定义一个接口type">
+  <meta name="description" content="下载最新的goland  创建新项目:  打开新的本地项目： 进入到项目跟目录执行 初始化1go mod init yourmodname 更新 1go mod tidy 然后设置  结果看到这个就ok:  这样导入外部包就会在Go modules里寻找">
 <meta property="og:type" content="article">
-<meta property="og:title" content="go-接口以及实现">
-<meta property="og:url" content="http://yoursite.com/2019/02/07/gox-接口以及实现/index.html">
+<meta property="og:title" content="新版goland使用go module 创建和打开项目">
+<meta property="og:url" content="http://yoursite.com/2019/03/07/新版goland使用go-module-创建和打开项目/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435package mainimport &amp;quot;fmt&amp;quot;//go 没有继承的概念但有这种类似的操作，如下//定义接口以及如何实现这个接口，有点不容易理解，只要是一个struct实现了一个interface的所有方法就算实现了这个接口（继承）//定义一个接口type">
+<meta property="og:description" content="下载最新的goland  创建新项目:  打开新的本地项目： 进入到项目跟目录执行 初始化1go mod init yourmodname 更新 1go mod tidy 然后设置  结果看到这个就ok:  这样导入外部包就会在Go modules里寻找">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-07T04:58:34.000Z">
+<meta property="og:image" content="http://yoursite.com/images/pasted-24.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-25.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-28.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-29.png">
+<meta property="og:updated_time" content="2019-03-07T07:36:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="go-接口以及实现">
-<meta name="twitter:description" content="1234567891011121314151617181920212223242526272829303132333435package mainimport &amp;quot;fmt&amp;quot;//go 没有继承的概念但有这种类似的操作，如下//定义接口以及如何实现这个接口，有点不容易理解，只要是一个struct实现了一个interface的所有方法就算实现了这个接口（继承）//定义一个接口type">
+<meta name="twitter:title" content="新版goland使用go module 创建和打开项目">
+<meta name="twitter:description" content="下载最新的goland  创建新项目:  打开新的本地项目： 进入到项目跟目录执行 初始化1go mod init yourmodname 更新 1go mod tidy 然后设置  结果看到这个就ok:  这样导入外部包就会在Go modules里寻找">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-24.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/07/gox-接口以及实现/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/03/07/新版goland使用go-module-创建和打开项目/"/>
 
 
 
@@ -135,7 +140,7 @@
   };
 </script>
 
-  <title>go-接口以及实现 | Hexo</title>
+  <title>新版goland使用go module 创建和打开项目 | Hexo</title>
   
 
 
@@ -280,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/07/gox-接口以及实现/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/07/新版goland使用go-module-创建和打开项目/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -297,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">go-接口以及实现
+          <h1 class="post-title" itemprop="name headline">新版goland使用go module 创建和打开项目
               
             
           </h1>
@@ -322,7 +327,7 @@
                 
               
 
-              <time title="Created: 2019-02-07 12:56:52 / Modified: 12:58:34" itemprop="dateCreated datePublished" datetime="2019-02-07T12:56:52+08:00">2019-02-07</time>
+              <time title="Created: 2019-03-07 15:29:43 / Modified: 15:36:30" itemprop="dateCreated datePublished" datetime="2019-03-07T15:29:43+08:00">2019-03-07</time>
             
 
             
@@ -360,7 +365,21 @@
       
 
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line">//go 没有继承的概念但有这种类似的操作，如下</span><br><span class="line">//定义接口以及如何实现这个接口，有点不容易理解，只要是一个struct实现了一个interface的所有方法就算实现了这个接口（继承）</span><br><span class="line">//定义一个接口</span><br><span class="line">type Usb interface &#123;</span><br><span class="line">	name() string</span><br><span class="line">	connect()</span><br><span class="line">&#125;</span><br><span class="line">//一个结构体用来实现接口</span><br><span class="line">type Iphone struct &#123;</span><br><span class="line">	v string</span><br><span class="line">&#125;</span><br><span class="line">//接口的所有方法定义，Iphone 作为接收者,注意要实现所有接口里声明的方法才算实现这个接口</span><br><span class="line">func (Iphone Iphone)name() string  &#123;</span><br><span class="line">	return &quot;your iphone &quot;+Iphone.v</span><br><span class="line">&#125;</span><br><span class="line">func (Iphone Iphone)connect()  &#123;</span><br><span class="line">	fmt.Println(&quot;is connnected!&quot;)</span><br><span class="line">&#125;</span><br><span class="line">func disconnect(a Usb)  &#123;</span><br><span class="line">	a.name()</span><br><span class="line">	fmt.Println(&quot;disconnected !&quot;)</span><br><span class="line">&#125;</span><br><span class="line">func main()  &#123;</span><br><span class="line">	//实例化Iphone 这个struct</span><br><span class="line">	a:= Iphone&#123;&#125;</span><br><span class="line">	a.v = &quot;phoneX&quot;</span><br><span class="line">	//调用实现接口的方法</span><br><span class="line">	b:= a.name()</span><br><span class="line">	fmt.Println(b)</span><br><span class="line">	//测试下实例化的a，是否是实现一个USB接口，disconnect 的参数a 限定是usb类型，如果iphone没有实现usb，会报错</span><br><span class="line">	//测试发现确实是实现了Usb接口，很神奇</span><br><span class="line">	disconnect(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>下载最新的goland</p>
+<p><img src="/images/pasted-24.png" alt="upload successful"></p>
+<p>创建新项目:</p>
+<p><img src="/images/pasted-25.png" alt="upload successful"></p>
+<p>打开新的本地项目：</p>
+<p>进入到项目跟目录执行</p>
+<p>初始化<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod init yourmodname</span><br></pre></td></tr></table></figure></p>
+<p>更新</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod tidy</span><br></pre></td></tr></table></figure>
+<p>然后设置</p>
+<p><img src="/images/pasted-28.png" alt="upload successful"></p>
+<p>结果看到这个就ok:</p>
+<p><img src="/images/pasted-29.png" alt="upload successful"></p>
+<p>这样导入外部包就会在Go modules里寻找</p>
+
       
     </div>
 
@@ -387,8 +406,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/04/go学习-方法/" rel="next" title="go学习-方法">
-                <i class="fa fa-chevron-left"></i> go学习-方法
+              <a href="/2019/03/07/go1-12-module-使用和goland设置/" rel="next" title="go1.12 使用go module 和搭建开发环境">
+                <i class="fa fa-chevron-left"></i> go1.12 使用go module 和搭建开发环境
               </a>
             
           </div>
@@ -396,10 +415,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/13/go协程和信道使用/" rel="prev" title="go协程和信道使用">
-                go协程和信道使用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
