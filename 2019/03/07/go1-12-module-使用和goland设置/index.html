@@ -108,24 +108,28 @@
 
 
 
-  <meta name="description" content="Docker 打包命令拉取镜像 ⇒  docker pull centos 创建容器 ⇒  sudo docker run -it --name myFirstCentos centos /bin/bash 查看容器 ⇒  docker ps -a CONTAINER ID        IMAGE               COMMAND                  CREATED">
+  <meta name="description" content="go1.11之后的大变化这篇写出来了是为了避免踩坑。go1.11之后的版本根之前的包管理方式不同，并且项目不再依赖GOPATH，使用了GO module 模式。 go 1.11 有了对模块的实验性支持，大部分的子命令都知道如何处理一个模块，比如 run build install get list mod 子命令，第三方工具可能会支持的晚一些。到 go 1.12 会删除对 GOPATH 的支持，g">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker 打包镜像">
-<meta property="og:url" content="http://yoursite.com/2018/09/20/docker-打包镜像/index.html">
+<meta property="og:title" content="go1.12 使用go module 和搭建开发环境">
+<meta property="og:url" content="http://yoursite.com/2019/03/07/go1-12-module-使用和goland设置/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Docker 打包命令拉取镜像 ⇒  docker pull centos 创建容器 ⇒  sudo docker run -it --name myFirstCentos centos /bin/bash 查看容器 ⇒  docker ps -a CONTAINER ID        IMAGE               COMMAND                  CREATED">
+<meta property="og:description" content="go1.11之后的大变化这篇写出来了是为了避免踩坑。go1.11之后的版本根之前的包管理方式不同，并且项目不再依赖GOPATH，使用了GO module 模式。 go 1.11 有了对模块的实验性支持，大部分的子命令都知道如何处理一个模块，比如 run build install get list mod 子命令，第三方工具可能会支持的晚一些。到 go 1.12 会删除对 GOPATH 的支持，g">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-19T15:30:49.000Z">
+<meta property="og:image" content="http://yoursite.com/images/pasted-18.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-20.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-22.png">
+<meta property="og:updated_time" content="2019-03-07T02:50:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="docker 打包镜像">
-<meta name="twitter:description" content="Docker 打包命令拉取镜像 ⇒  docker pull centos 创建容器 ⇒  sudo docker run -it --name myFirstCentos centos /bin/bash 查看容器 ⇒  docker ps -a CONTAINER ID        IMAGE               COMMAND                  CREATED">
+<meta name="twitter:title" content="go1.12 使用go module 和搭建开发环境">
+<meta name="twitter:description" content="go1.11之后的大变化这篇写出来了是为了避免踩坑。go1.11之后的版本根之前的包管理方式不同，并且项目不再依赖GOPATH，使用了GO module 模式。 go 1.11 有了对模块的实验性支持，大部分的子命令都知道如何处理一个模块，比如 run build install get list mod 子命令，第三方工具可能会支持的晚一些。到 go 1.12 会删除对 GOPATH 的支持，g">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-18.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/20/docker-打包镜像/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/03/07/go1-12-module-使用和goland设置/"/>
 
 
 
@@ -135,7 +139,7 @@
   };
 </script>
 
-  <title>docker 打包镜像 | Hexo</title>
+  <title>go1.12 使用go module 和搭建开发环境 | Hexo</title>
   
 
 
@@ -280,7 +284,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/20/docker-打包镜像/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/07/go1-12-module-使用和goland设置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -297,7 +301,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">docker 打包镜像
+          <h1 class="post-title" itemprop="name headline">go1.12 使用go module 和搭建开发环境
               
             
           </h1>
@@ -322,24 +326,12 @@
                 
               
 
-              <time title="Created: 2018-09-20 16:59:46" itemprop="dateCreated datePublished" datetime="2018-09-20T16:59:46+08:00">2018-09-20</time>
+              <time title="Created: 2019-03-07 10:12:44 / Modified: 10:50:21" itemprop="dateCreated datePublished" datetime="2019-03-07T10:12:44+08:00">2019-03-07</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-19 23:30:49" itemprop="dateModified" datetime="2018-12-19T23:30:49+08:00">2018-12-19</time>
               
             
           </span>
@@ -372,49 +364,46 @@
       
 
       
-        <h4 id="Docker-打包命令"><a href="#Docker-打包命令" class="headerlink" title="Docker 打包命令"></a>Docker 打包命令</h4><p>拉取镜像</p>
-<pre><code>⇒  docker pull centos
-</code></pre><p>创建容器</p>
-<pre><code>⇒  sudo docker run -it --name myFirstCentos centos /bin/bash
-</code></pre><p>查看容器</p>
-<pre><code>⇒  docker ps -a
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
-4da46cd0a26a        centos              &quot;/bin/bash&quot;              9 days ago          Exited (0) 40 minutes ago                       myFirstCentos
-</code></pre><p>启动容器</p>
-<pre><code>⇒  docker start myFirstCentos
-myFirstCentos
-</code></pre><p>进入容器 （添加test.txt）</p>
-<pre><code>⇒  docker attach myFirstCentos
-    [root@4da46cd0a26a /]# ls
-    bin  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
-    [root@4da46cd0a26a /]# cd tmp/
-    [root@4da46cd0a26a tmp]# ls
-    ks-script-Lu6hIQ  test.txt  yum.log
-    [root@4da46cd0a26a tmp]# exit
-</code></pre><h5 id="提交修改"><a href="#提交修改" class="headerlink" title="提交修改"></a>提交修改</h5><pre><code>⇒  docker commit 4da46cd0a26a jangozw/centos-test:v1
-sha256:783ce3eaff7129a839cc67cf6bd88b6effc9ac6f9b2a36e5508c07d6666e1cd1
-⇒
-</code></pre><p>登陆docker </p>
-<pre><code>⇒ docker login (执行会让你输入用户名密码)
-</code></pre><h5 id="推送到hub-docker"><a href="#推送到hub-docker" class="headerlink" title="推送到hub.docker"></a>推送到hub.docker</h5><pre><code>⇒  docker push jangozw/centos-test:v1
-The push refers to repository [docker.io/jangozw/centos-test]
-0b2b943ab4e1: Pushed
-1d31b5806ba4: Mounted from jangozw/centos-lnmp
-v1: digest:         sha256:81651353f780acd8842be300ca9c0cdeea93f87ae016b76925cdbfd00562c984 size: 736
-⇒
-</code></pre><p>提交成功，查看镜像</p>
-<pre><code>⇒  docker images
-REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE
-jangozw/centos-test   v1                  783ce3eaff71        3 minutes ago       200MB
-jangozw/centos-lnmp   v1                  09d5dd7b4fd3        About an hour ago   200MB
-nginx                 latest              06144b287844        2 weeks ago         109MB
-centos                latest              5182e96772bf        6 weeks ago         200MB
-⇒
-</code></pre><p>在远程仓库查看</p>
-<pre><code>https://hub.docker.com 
-</code></pre><p>打包成功，这时候可以拉取自己的镜像了</p>
-<pre><code>⇒ docker pull jangozw/centos-test:v1 
-</code></pre><p>创建这个镜像的容器后发现 test.txt 在里面</p>
+        <h4 id="go1-11之后的大变化"><a href="#go1-11之后的大变化" class="headerlink" title="go1.11之后的大变化"></a>go1.11之后的大变化</h4><p>这篇写出来了是为了避免踩坑。<br>go1.11之后的版本根之前的包管理方式不同，并且项目不再依赖GOPATH，使用了GO module 模式。</p>
+<p>go 1.11 有了对模块的实验性支持，大部分的子命令都知道如何处理一个模块，比如 run build install get list mod 子命令，第三方工具可能会支持的晚一些。到 go 1.12 会删除对 GOPATH 的支持，go get 命令也会变成只能获取模块，不能像现在这样直接获取一个裸包。<br>可以用环境变量 GO111MODULE 开启或关闭模块支持，它有三个可选值：off、on、auto，默认值是 auto。</p>
+<p>GO111MODULE=off 无模块支持，go 会从 GOPATH 和 vendor 文件夹寻找包。</p>
+<p>GO111MODULE=on 模块支持，go 会忽略 GOPATH 和 vendor 文件夹，只根据 go.mod 下载依赖。</p>
+<p>GO111MODULE=auto 在 $GOPATH/src 外面且根目录有 go.mod 文件时，开启模块支持。</p>
+<p>在使用模块的时候，GOPATH 是无意义的，不过它还是会把下载的依赖储存在 $GOPATH/pkg/mod 中，也会把 go install 的结果放在 $GOPATH/bin 中。</p>
+<p>更多go mod 使用 ：<a href="https://www.jianshu.com/p/c5733da150c6" target="_blank" rel="noopener">https://www.jianshu.com/p/c5733da150c6</a></p>
+<h4 id="重要区别"><a href="#重要区别" class="headerlink" title="重要区别"></a>重要区别</h4><p>go1.11之前的包管理使用的govendor , 是不区分包版本的，意味着开发期间拉的依赖的包很可能跟上线后的拉的依赖包版本不一致，很危险。</p>
+<p>go1.11之后，水用go module 模式，解除对GOPATH依赖，使用go get 管理下载依赖包，带版本控制的</p>
+<h4 id="两个路径"><a href="#两个路径" class="headerlink" title="两个路径"></a>两个路径</h4><p>go 安装后要设置两个路径</p>
+<p>GOPATH : go1.11之前放项目的地方，go.1.11后不放项目了，是go get 后的依赖包存放的地方</p>
+<p>GOROOT : go的安装路径,里面有系统包,如fmt</p>
+<p>寻找依赖包的方式:</p>
+<p>1,go1.11之前查找顺序</p>
+<ul>
+<li>项目的vendor目录</li>
+<li>GOPATH/src</li>
+<li>GOROOT/src </li>
+</ul>
+<p>2, go1.11之后（设置GO111MODULE=on后）</p>
+<ul>
+<li>GOPATH/pkg/mod</li>
+<li>GOROOT/src</li>
+</ul>
+<h4 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h4><p>以go1.12版本为例</p>
+<p>1，安装go1.12</p>
+<p>下载地址  <a href="https://golang.google.cn/dl" target="_blank" rel="noopener">https://golang.google.cn/dl</a></p>
+<p>解压即可 /usr/local/go 就是安装路径（GOROOT）<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -C /usr/<span class="built_in">local</span> -xzf go1.12.darwin-amd64.tar.gz</span><br></pre></td></tr></table></figure></p>
+<p>2, 环境变量设置</p>
+<p>这段代码放在你的.bash_profile文件中，操作不懂就去查。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置只支持go module模式</span></span><br><span class="line"><span class="built_in">export</span> GO111MODULE=on</span><br><span class="line"><span class="comment">#go 安装路径</span></span><br><span class="line"><span class="built_in">export</span> GOROOT=/usr/<span class="built_in">local</span>/Cellar/go/1.12</span><br><span class="line"><span class="comment">#go get下载依赖包的路径(go1.11后项目不需要放gopath)</span></span><br><span class="line"><span class="built_in">export</span> GOPATH=/Users/Django/www/GOPATH</span><br><span class="line"><span class="comment">#方便使用安装小工具如fresh</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$&#123;GOPATH//://bin:&#125;</span>/bin</span><br><span class="line"><span class="comment">#将go 添加到环境变量</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$GOROOT</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="comment">#go 代理地址</span></span><br><span class="line"><span class="built_in">export</span> GOPROXY=https://goproxy.io</span><br></pre></td></tr></table></figure>
+<p>3，编辑器goland 设置</p>
+<p>go1.11是2018年发布的，因此一定要更新你的goland为最新版本，否者不支持go module</p>
+<p>安装后打开goland，新建项目会有一个go module项目，选他</p>
+<p><img src="/images/pasted-18.png" alt="upload successful"></p>
+<p>项目地址任意选择目录</p>
+<p><img src="/images/pasted-20.png" alt="upload successful"></p>
+<p>看到这个就ok了</p>
+<p><img src="/images/pasted-22.png" alt="upload successful"></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>上面说的比较简单，是未来帮你快速搭建go1.12开发环境，go module 模式的包管理方式 还需要多去看看</p>
 
       
     </div>
@@ -442,8 +431,8 @@ centos                latest              5182e96772bf        6 weeks ago       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/10/linux-安装RabbitMq/" rel="next" title="linux 安装RabbitMq">
-                <i class="fa fa-chevron-left"></i> linux 安装RabbitMq
+              <a href="/2019/02/13/go协程看这篇就够了/" rel="next" title="go协程看这篇就够了">
+                <i class="fa fa-chevron-left"></i> go协程看这篇就够了
               </a>
             
           </div>
@@ -451,10 +440,6 @@ centos                latest              5182e96772bf        6 weeks ago       
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/21/阿里云ssh登陆不上问题/" rel="prev" title="阿里云ssh登陆不上问题">
-                阿里云ssh登陆不上问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -564,7 +549,7 @@ centos                latest              5182e96772bf        6 weeks ago       
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker-打包命令"><span class="nav-number">1.</span> <span class="nav-text">Docker 打包命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#提交修改"><span class="nav-number">1.1.</span> <span class="nav-text">提交修改</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#推送到hub-docker"><span class="nav-number">1.2.</span> <span class="nav-text">推送到hub.docker</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#go1-11之后的大变化"><span class="nav-number">1.</span> <span class="nav-text">go1.11之后的大变化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重要区别"><span class="nav-number">2.</span> <span class="nav-text">重要区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两个路径"><span class="nav-number">3.</span> <span class="nav-text">两个路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#环境搭建"><span class="nav-number">4.</span> <span class="nav-text">环境搭建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
