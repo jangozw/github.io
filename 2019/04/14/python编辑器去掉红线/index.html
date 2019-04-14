@@ -108,24 +108,26 @@
 
 
 
-  <meta name="description" content="Docker 打包命令拉取镜像 ⇒  docker pull centos 创建容器 ⇒  sudo docker run -it --name myFirstCentos centos /bin/bash 查看容器 ⇒  docker ps -a CONTAINER ID        IMAGE               COMMAND                  CREATED">
+  <meta name="description" content="如何去掉编辑器的红线1，这里会保证pip 安装的项目能正确导入可以跟踪，但同一个项目内自己的文件却不能跟踪，第2步解决 2，解决项目里的文件导入不报红线 https://blog.csdn.net/lvxiaoting/article/details/80509034">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker 打包镜像">
-<meta property="og:url" content="http://yoursite.com/2018/09/20/docker-打包镜像/index.html">
+<meta property="og:title" content="python编辑器去掉红线">
+<meta property="og:url" content="http://yoursite.com/2019/04/14/python编辑器去掉红线/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Docker 打包命令拉取镜像 ⇒  docker pull centos 创建容器 ⇒  sudo docker run -it --name myFirstCentos centos /bin/bash 查看容器 ⇒  docker ps -a CONTAINER ID        IMAGE               COMMAND                  CREATED">
+<meta property="og:description" content="如何去掉编辑器的红线1，这里会保证pip 安装的项目能正确导入可以跟踪，但同一个项目内自己的文件却不能跟踪，第2步解决 2，解决项目里的文件导入不报红线 https://blog.csdn.net/lvxiaoting/article/details/80509034">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-19T15:30:49.000Z">
+<meta property="og:image" content="http://yoursite.com/images/pasted-32.png">
+<meta property="og:updated_time" content="2019-04-14T14:31:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="docker 打包镜像">
-<meta name="twitter:description" content="Docker 打包命令拉取镜像 ⇒  docker pull centos 创建容器 ⇒  sudo docker run -it --name myFirstCentos centos /bin/bash 查看容器 ⇒  docker ps -a CONTAINER ID        IMAGE               COMMAND                  CREATED">
+<meta name="twitter:title" content="python编辑器去掉红线">
+<meta name="twitter:description" content="如何去掉编辑器的红线1，这里会保证pip 安装的项目能正确导入可以跟踪，但同一个项目内自己的文件却不能跟踪，第2步解决 2，解决项目里的文件导入不报红线 https://blog.csdn.net/lvxiaoting/article/details/80509034">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-32.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/20/docker-打包镜像/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/04/14/python编辑器去掉红线/"/>
 
 
 
@@ -135,7 +137,7 @@
   };
 </script>
 
-  <title>docker 打包镜像 | Hexo</title>
+  <title>python编辑器去掉红线 | Hexo</title>
   
 
 
@@ -280,7 +282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/20/docker-打包镜像/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/14/python编辑器去掉红线/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -297,7 +299,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">docker 打包镜像
+          <h1 class="post-title" itemprop="name headline">python编辑器去掉红线
               
             
           </h1>
@@ -322,24 +324,12 @@
                 
               
 
-              <time title="Created: 2018-09-20 16:59:46" itemprop="dateCreated datePublished" datetime="2018-09-20T16:59:46+08:00">2018-09-20</time>
+              <time title="Created: 2019-04-14 22:27:08 / Modified: 22:31:19" itemprop="dateCreated datePublished" datetime="2019-04-14T22:27:08+08:00">2019-04-14</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-19 23:30:49" itemprop="dateModified" datetime="2018-12-19T23:30:49+08:00">2018-12-19</time>
               
             
           </span>
@@ -372,49 +362,9 @@
       
 
       
-        <h4 id="Docker-打包命令"><a href="#Docker-打包命令" class="headerlink" title="Docker 打包命令"></a>Docker 打包命令</h4><p>拉取镜像</p>
-<pre><code>⇒  docker pull centos
-</code></pre><p>创建容器</p>
-<pre><code>⇒  sudo docker run -it --name myFirstCentos centos /bin/bash
-</code></pre><p>查看容器</p>
-<pre><code>⇒  docker ps -a
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
-4da46cd0a26a        centos              &quot;/bin/bash&quot;              9 days ago          Exited (0) 40 minutes ago                       myFirstCentos
-</code></pre><p>启动容器</p>
-<pre><code>⇒  docker start myFirstCentos
-myFirstCentos
-</code></pre><p>进入容器 （添加test.txt）</p>
-<pre><code>⇒  docker attach myFirstCentos
-    [root@4da46cd0a26a /]# ls
-    bin  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
-    [root@4da46cd0a26a /]# cd tmp/
-    [root@4da46cd0a26a tmp]# ls
-    ks-script-Lu6hIQ  test.txt  yum.log
-    [root@4da46cd0a26a tmp]# exit
-</code></pre><h5 id="提交修改"><a href="#提交修改" class="headerlink" title="提交修改"></a>提交修改</h5><pre><code>⇒  docker commit 4da46cd0a26a jangozw/centos-test:v1
-sha256:783ce3eaff7129a839cc67cf6bd88b6effc9ac6f9b2a36e5508c07d6666e1cd1
-⇒
-</code></pre><p>登陆docker </p>
-<pre><code>⇒ docker login (执行会让你输入用户名密码)
-</code></pre><h5 id="推送到hub-docker"><a href="#推送到hub-docker" class="headerlink" title="推送到hub.docker"></a>推送到hub.docker</h5><pre><code>⇒  docker push jangozw/centos-test:v1
-The push refers to repository [docker.io/jangozw/centos-test]
-0b2b943ab4e1: Pushed
-1d31b5806ba4: Mounted from jangozw/centos-lnmp
-v1: digest:         sha256:81651353f780acd8842be300ca9c0cdeea93f87ae016b76925cdbfd00562c984 size: 736
-⇒
-</code></pre><p>提交成功，查看镜像</p>
-<pre><code>⇒  docker images
-REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE
-jangozw/centos-test   v1                  783ce3eaff71        3 minutes ago       200MB
-jangozw/centos-lnmp   v1                  09d5dd7b4fd3        About an hour ago   200MB
-nginx                 latest              06144b287844        2 weeks ago         109MB
-centos                latest              5182e96772bf        6 weeks ago         200MB
-⇒
-</code></pre><p>在远程仓库查看</p>
-<pre><code>https://hub.docker.com 
-</code></pre><p>打包成功，这时候可以拉取自己的镜像了</p>
-<pre><code>⇒ docker pull jangozw/centos-test:v1 
-</code></pre><p>创建这个镜像的容器后发现 test.txt 在里面</p>
+        <h3 id="如何去掉编辑器的红线"><a href="#如何去掉编辑器的红线" class="headerlink" title="如何去掉编辑器的红线"></a>如何去掉编辑器的红线</h3><p>1，<br>这里会保证pip 安装的项目能正确导入可以跟踪，但同一个项目内自己的文件却不能跟踪，第2步解决<br><img src="/images/pasted-32.png" alt="upload successful"></p>
+<p>2，解决项目里的文件导入不报红线</p>
+<p><a href="https://blog.csdn.net/lvxiaoting/article/details/80509034" target="_blank" rel="noopener">https://blog.csdn.net/lvxiaoting/article/details/80509034</a></p>
 
       
     </div>
@@ -442,8 +392,8 @@ centos                latest              5182e96772bf        6 weeks ago       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/10/linux-安装RabbitMq/" rel="next" title="linux 安装RabbitMq">
-                <i class="fa fa-chevron-left"></i> linux 安装RabbitMq
+              <a href="/2019/03/07/新版goland使用go-module-创建和打开项目/" rel="next" title="新版goland使用go module 创建和打开项目">
+                <i class="fa fa-chevron-left"></i> 新版goland使用go module 创建和打开项目
               </a>
             
           </div>
@@ -451,10 +401,6 @@ centos                latest              5182e96772bf        6 weeks ago       
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/21/阿里云ssh登陆不上问题/" rel="prev" title="阿里云ssh登陆不上问题">
-                阿里云ssh登陆不上问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -564,7 +510,7 @@ centos                latest              5182e96772bf        6 weeks ago       
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker-打包命令"><span class="nav-number">1.</span> <span class="nav-text">Docker 打包命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#提交修改"><span class="nav-number">1.1.</span> <span class="nav-text">提交修改</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#推送到hub-docker"><span class="nav-number">1.2.</span> <span class="nav-text">推送到hub.docker</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何去掉编辑器的红线"><span class="nav-number">1.</span> <span class="nav-text">如何去掉编辑器的红线</span></a></li></ol></div>
             
 
           </div>
