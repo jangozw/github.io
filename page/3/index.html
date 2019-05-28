@@ -110,7 +110,7 @@
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/03/index.html">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
@@ -121,7 +121,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2019/03/"/>
+  <link rel="canonical" href="http://yoursite.com/page/3/"/>
 
 
 
@@ -131,7 +131,7 @@
   };
 </script>
 
-  <title>Archive | Hexo</title>
+  <title>Hexo</title>
   
 
 
@@ -178,7 +178,8 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -223,7 +224,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
   </li>
@@ -256,129 +257,163 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
 
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        Um..! 21 posts in total. Keep on posting.
-      </span>
-      
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/10/docker-安装/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/03/07/新版goland使用go-module-创建和打开项目/" itemprop="url">
-              
-                <span itemprop="name">新版goland使用go module 创建和打开项目</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/10/docker-安装/" itemprop="url">
+                  docker 安装
+                </a>
+              
+            
+          </h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-03-07T15:29:43+08:00"
-              content="2019-03-07" >
-          03-07
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
 
+              
+                
+              
+
+              <time title="Created: 2018-09-10 19:48:19 / Modified: 19:50:38" itemprop="dateCreated datePublished" datetime="2018-09-10T19:48:19+08:00">2018-09-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/07/go1-12-module-使用和goland设置/" itemprop="url">
-              
-                <span itemprop="name">go1.12 使用go module 和搭建开发环境</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-03-07T10:12:44+08:00"
-              content="2019-03-07" >
-          03-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
+      
+        
+          
+            <h3 id="下载docker"><a href="#下载docker" class="headerlink" title="下载docker"></a>下载docker</h3><pre><code>https://download.docker.com/mac/stable/Docker.dmg
+直接下一步安装完，就会显示在系统状态栏，然后更改下国内镜像源。
+</code></pre><h3 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">⇒  docker pull centos</span><br><span class="line">jangozw@jianggedeMacBook-Pro:~/www-data|</span><br><span class="line">⇒  sudo docker run -it --name myFirstCentos centos /bin/bash</span><br><span class="line">Password:</span><br><span class="line">[root@f650f70f93d1 /]#</span><br></pre></td></tr></table></figure>
+<p>这就进入了创建的一个centos 容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">查看系统：</span><br><span class="line">[root@f650f70f93d1 /]# cat /etc/redhat-release</span><br><span class="line">CentOS Linux release 7.5.1804 (Core)</span><br><span class="line">[root@f650f70f93d1 /]#</span><br></pre></td></tr></table></figure></p>
+<p>现在就可以在里面装各种软件了，就当是centos用。<br>执行 exit 退出容器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">查看已经创建的容器和状态</span><br><span class="line">  docker ps -a</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES</span><br><span class="line">4da46cd0a26a        centos              &quot;/bin/bash&quot;              41 seconds ago      Exited (0) 4 seconds ago                        myFirstCentos</span><br></pre></td></tr></table></figure>
+<p>由status可知此时容器是 退出exit 状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">启动容器：</span><br><span class="line">⇒  docker start 4da46cd0a26a</span><br><span class="line">4da46cd0a26a</span><br><span class="line">jangozw@jianggedeMacBook-Pro:~/www-data|</span><br><span class="line">⇒  docker ps -a</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES</span><br><span class="line">4da46cd0a26a        centos              &quot;/bin/bash&quot;              5 minutes ago       Up 6 seconds                                    myFirstCentos</span><br><span class="line">看状态已经改变了</span><br><span class="line">再进入容器 （参数是容器id/名称）</span><br><span class="line">⇒  docker attach 4da46cd0a26a </span><br><span class="line">[root@4da46cd0a26a /]#</span><br><span class="line">停止容器</span><br><span class="line">[root@4da46cd0a26a /]# exit</span><br><span class="line">⇒  docker stop myFirstCentos</span><br><span class="line">myFirstCentos</span><br><span class="line">jangozw@jianggedeMacBook-Pro:~/www-data|</span><br><span class="line">⇒</span><br></pre></td></tr></table></figure>
+          
+        
+      
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
   
   
   
+  </article>
+
+
+    
+  </section>
 
   
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
 
 
 
