@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="安装rabitmq jangozw@jianggedeMacBook-Pro:/tmp|⇒  brew install rabbitmq 如果有提示：Error: parent directory is world writable but not sticky jangozw@jianggedeMacBook-Pro:/tmp|⇒  brew install rabbitmq  Updating">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-10T11:49:32.000Z">
+<meta property="og:updated_time" content="2019-06-07T12:02:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux 安装RabbitMq">
 <meta name="twitter:description" content="安装rabitmq jangozw@jianggedeMacBook-Pro:/tmp|⇒  brew install rabbitmq 如果有提示：Error: parent directory is world writable but not sticky jangozw@jianggedeMacBook-Pro:/tmp|⇒  brew install rabbitmq  Updating">
@@ -322,12 +322,24 @@
                 
               
 
-              <time title="Created: 2018-09-10 19:49:31 / Modified: 19:49:32" itemprop="dateCreated datePublished" datetime="2018-09-10T19:49:31+08:00">2018-09-10</time>
+              <time title="Created: 2018-09-10 19:49:31" itemprop="dateCreated datePublished" datetime="2018-09-10T19:49:31+08:00">2018-09-10</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-07 20:02:09" itemprop="dateModified" datetime="2019-06-07T20:02:09+08:00">2019-06-07</time>
               
             
           </span>
@@ -407,8 +419,9 @@ Or, if you don&apos;t want/need a background service you can just run:
 🍺  /usr/local/Cellar/rabbitmq/3.7.7_1: 233 files, 13.3MB, built in 2 seconds
 </code></pre><p>根据安装成功后的提示信息可知启动方法：</p>
 <pre><code>/usr/local/Cellar/rabbitmq/3.7.7_1/sbin/rabbitmq-server
-</code></pre><p>管理后台：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:15672 </span><br><span class="line">用户：guest </span><br><span class="line">密码：guest</span><br></pre></td></tr></table></figure>
+</code></pre><p>启用管理后台：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">rabbitmq-plugins enable rabbitmq_management</span><br><span class="line">firewall-cmd --zone=public --add-port=15672/tcp --permanent</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">登陆：</span><br><span class="line">http://localhost:15672 </span><br><span class="line">用户：guest </span><br><span class="line">密码：guest</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -508,7 +521,7 @@ Or, if you don&apos;t want/need a background service you can just run:
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="比特币中的交易详解UTXO 是 Unspent Transaction Output 的缩写，意指“为花费的交易输出”，是中本聪最早在比特币中采用的一种技术方案。因为比特币中没有账户的概念，也就没有保存用户余额数值的机制。因为区块链中的历史交易都是被保存且不可修改的，而每一个交易（如前所述的Transaction）中又保存了“谁转移了多少给谁”的信息，所以要计算用户账户余额，只需要遍历所有交易进行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="比特币中的交易详解">
+<meta property="og:url" content="http://yoursite.com/2019/07/09/比特币中的交易详解/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="比特币中的交易详解UTXO 是 Unspent Transaction Output 的缩写，意指“为花费的交易输出”，是中本聪最早在比特币中采用的一种技术方案。因为比特币中没有账户的概念，也就没有保存用户余额数值的机制。因为区块链中的历史交易都是被保存且不可修改的，而每一个交易（如前所述的Transaction）中又保存了“谁转移了多少给谁”的信息，所以要计算用户账户余额，只需要遍历所有交易进行">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-09T14:33:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="比特币中的交易详解">
+<meta name="twitter:description" content="比特币中的交易详解UTXO 是 Unspent Transaction Output 的缩写，意指“为花费的交易输出”，是中本聪最早在比特币中采用的一种技术方案。因为比特币中没有账户的概念，也就没有保存用户余额数值的机制。因为区块链中的历史交易都是被保存且不可修改的，而每一个交易（如前所述的Transaction）中又保存了“谁转移了多少给谁”的信息，所以要计算用户账户余额，只需要遍历所有交易进行">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/09/比特币中的交易详解/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>比特币中的交易详解 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/09/比特币中的交易详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">比特币中的交易详解
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-09 22:30:29 / Modified: 22:33:27" itemprop="dateCreated datePublished" datetime="2019-07-09T22:30:29+08:00">2019-07-09</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="比特币中的交易详解"><a href="#比特币中的交易详解" class="headerlink" title="比特币中的交易详解"></a>比特币中的交易详解</h1><p>UTXO 是 Unspent Transaction Output 的缩写，意指“为花费的交易输出”，是中本聪最早在比特币中采用的一种技术方案。因为比特币中没有账户的概念，也就没有保存用户余额数值的机制。因为区块链中的历史交易都是被保存且不可修改的，而每一个交易（如前所述的Transaction）中又保存了“谁转移了多少给谁”的信息，所以要计算用户账户余额，只需要遍历所有交易进行累计即可。</p>
+<p>账户的余额其实是之前其他人转给该账户的钱处于锁定状态，要使用这笔钱就要解锁并且把发送人改为别人即可。 一笔交易是一系列的输入输出的集合，输入是寻找用户可花费的输出（utxo）, 输出是用户这笔交易要把金额给谁，包含输出给别人（转账）， 输出给自己（找零）,直接要代码定义的结构更直观。</p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="1，-输入"><a href="#1，-输入" class="headerlink" title="1， 输入"></a>1， 输入</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> TXInput <span class="keyword">struct</span> &#123;</span><br><span class="line">    Txid      []<span class="keyword">byte</span>  </span><br><span class="line">    Vout      <span class="keyword">int</span> <span class="comment">// 是utxo 的某个下标    </span></span><br><span class="line">    Signature []<span class="keyword">byte</span></span><br><span class="line">    PubKey    []<span class="keyword">byte</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<blockquote>
+</blockquote>
+<p>输入TXInput:</p>
+<ul>
+<li>Txid : 交易ID（这个输入使用的是哪个交易的输出）</li>
+<li>Vout : 该输入单元指向本次交易输出数组的下标，通俗讲就是，这个输入使用的是Txid中的第几个输出。</li>
+<li>Signature : 输入发起方（转账出去方）的私钥签名本Transaction，表示自己认证了这个输入TXInput。</li>
+<li>PubKey : 输入发起方的公钥</li>
+</ul>
+</blockquote>
+<h3 id="2，-输出"><a href="#2，-输出" class="headerlink" title="2， 输出"></a>2， 输出</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> TXOutput <span class="keyword">struct</span> &#123;</span><br><span class="line">    Value      <span class="keyword">int</span> <span class="comment">//金额</span></span><br><span class="line">    PubKeyHash []<span class="keyword">byte</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<blockquote>
+</blockquote>
+<p>输出TXOutput：</p>
+<ul>
+<li>Value : 表示这个输出中的代币数量</li>
+<li>PubKeyHash : 存放了一个用户的公钥的hash值，表示这个输出里面的Value是属于哪个用户的</li>
+</ul>
+</blockquote>
+<h3 id="3，-一个交易（多个输入输出的集合）"><a href="#3，-一个交易（多个输入输出的集合）" class="headerlink" title="3， 一个交易（多个输入输出的集合）"></a>3， 一个交易（多个输入输出的集合）</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Transaction <span class="keyword">struct</span> &#123;</span><br><span class="line">    ID   []<span class="keyword">byte</span>        <span class="comment">//交易唯一ID</span></span><br><span class="line">    Vin  []TXInput     <span class="comment">//交易输入序列</span></span><br><span class="line">    Vout []TXOutput    <span class="comment">//交易输出序列</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="交易范例"><a href="#交易范例" class="headerlink" title="交易范例"></a>交易范例</h1><p>Alice 去咖啡店买一杯咖啡，她需要支付给老板Bob的咖啡金额是5 个比特币。接下来看代码如何实现：</p>
+<h2 id="1，在区块链中查询Alice的未花费的输出"><a href="#1，在区块链中查询Alice的未花费的输出" class="headerlink" title="1，在区块链中查询Alice的未花费的输出"></a>1，在区块链中查询Alice的未花费的输出</h2><p>如果一个账户需要进行一次交易，把自己的代币转给别人，由于没有一个账号系统可以直接查询余额和变更，而在utxo模型里面一个用户账户余额就是这个用户的所有utxo（未花费的输出）记录的合集，因此需要查询用户的转账额度是否足够，以及本次转账需要消耗哪些output（将“未花费”的output变成”已花费“的output），通过遍历区块链中每个区块中的每个交易中的output来得到结果。<br>下面看看怎么查找一个特定用户的utxo，utxo_set.go相关代码如下：<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 找到用户可花费的输出，满足花费的金额即可，返回的可花费的金额 和 对应的交易输出的下标</span></span><br><span class="line"><span class="comment">// 注意返回的可花费的金额accumulated 是 大于等于 要花费的金额的，因为可花费金额是该用户的多笔不同金额的utxo累加的</span></span><br><span class="line"><span class="comment">// 如果返回的utxo金额累计大于要花费的金额，则多出的部分就是找零，相当于多个utxo是面额不同的金额累加成一个大额</span></span><br><span class="line"><span class="comment">//注意： 返回的第二个参数是某笔交易的某个下标 如 trans[txid_1111]=1 就是txid_1111这个交易的下标为1的输出被选用了</span></span><br><span class="line"><span class="comment">// FindSpendableOutputs finds and returns unspent outputs to reference in inputs</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u UTXOSet)</span> <span class="title">FindSpendableOutputs</span><span class="params">(pubkeyHash []<span class="keyword">byte</span>, amount <span class="keyword">int</span>)</span> <span class="params">(<span class="keyword">int</span>, <span class="keyword">map</span>[<span class="keyword">string</span>][]<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">	unspentOutputs := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>][]<span class="keyword">int</span>)</span><br><span class="line">	accumulated := <span class="number">0</span></span><br><span class="line">	db := u.Blockchain.db</span><br><span class="line"></span><br><span class="line">	err := db.View(<span class="function"><span class="keyword">func</span><span class="params">(tx *bolt.Tx)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">		b := tx.Bucket([]<span class="keyword">byte</span>(utxoBucket))</span><br><span class="line">		c := b.Cursor()</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> k, v := c.First(); k != <span class="literal">nil</span>; k, v = c.Next() &#123;</span><br><span class="line">			txID := hex.EncodeToString(k)</span><br><span class="line">			outs := DeserializeOutputs(v)</span><br><span class="line"></span><br><span class="line">			<span class="keyword">for</span> outIdx, out := <span class="keyword">range</span> outs.Outputs &#123;</span><br><span class="line">				<span class="keyword">if</span> out.IsLockedWithKey(pubkeyHash) &amp;&amp; accumulated &lt; amount &#123;</span><br><span class="line">					accumulated += out.Value</span><br><span class="line">					unspentOutputs[txID] = <span class="built_in">append</span>(unspentOutputs[txID], outIdx)</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Panic(err)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> accumulated, unspentOutputs</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>FindSpendableOutputs查找区块链上pubkeyHash账户的utxo集合，直到这些集合的累计未花费金额达到需求的amount为止。</p>
+<p>blockchain_go中使用嵌入式key-value数据库boltdb存储区块链和未花费输出等信息，其中utxoBucket是所有用户未花费输出的bucket，其中的key表示交易ID，value是这个交易中未被引用的所有output的集合。所以通过遍历查询本次交易需要花费的output，得到Transaction的txID和这个output在Transaction中的输出数组中的下标组合unspentOutputs。</p>
+<p>另外一个重点是utxobucket中保存的未花费输出结合是关于所有账户的，要查询特定账户需要对账户进行判断，因为TXOutput中有pubkeyhash字段，用来表示该输出属于哪个用户，此处采用out.IsLockedWithKey(pubkeyHash)判断特定output是否是属于给定用户。</p>
+<h2 id="2-构建一个交易"><a href="#2-构建一个交易" class="headerlink" title="2, 构建一个交易"></a>2, 构建一个交易</h2><p>需要发起一笔交易的时候，需要新建一个Transaction，通过交易发起人的钱包得到足够的未花费输出，构建出交易的输入和输出，完成签名即可，blockchain_go中的实现如下</p>
+<p>函数参数：</p>
+<ul>
+<li>wallet : 用户钱包参数，存储用户的公私钥，用于交易的签名和验证。</li>
+<li>to : 交易转账的目的地址（转账给谁）。</li>
+<li>amount : 需要交易的代币额度。</li>
+<li>UTXOSet : uxto集合，查询用户的未花费输出。<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewUTXOTransaction</span><span class="params">(wallet *Wallet, to <span class="keyword">string</span>, amount <span class="keyword">int</span>, UTXOSet *UTXOSet)</span> *<span class="title">Transaction</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> inputs []TXInput</span><br><span class="line">	<span class="keyword">var</span> outputs []TXOutput</span><br><span class="line"></span><br><span class="line">	pubKeyHash := HashPubKey(wallet.PublicKey)</span><br><span class="line">	<span class="comment">// 查询用户可花费金额 和 对应的可花费交易的下标</span></span><br><span class="line">	acc, validOutputs := UTXOSet.FindSpendableOutputs(pubKeyHash, amount)</span><br><span class="line">	<span class="comment">//可花费金额小于 要输出的金额 则报错</span></span><br><span class="line">	<span class="keyword">if</span> acc &lt; amount &#123;</span><br><span class="line">		log.Panic(<span class="string">"ERROR: Not enough funds"</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Build a list of inputs</span></span><br><span class="line">	<span class="keyword">for</span> txid, outs := <span class="keyword">range</span> validOutputs &#123;</span><br><span class="line">		txID, err := hex.DecodeString(txid)</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			log.Panic(err)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> _, out := <span class="keyword">range</span> outs &#123;</span><br><span class="line">			input := TXInput&#123;txID, out, <span class="literal">nil</span>, wallet.PublicKey&#125;</span><br><span class="line">			inputs = <span class="built_in">append</span>(inputs, input)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Build a list of outputs</span></span><br><span class="line">	from := fmt.Sprintf(<span class="string">"%s"</span>, wallet.GetAddress())</span><br><span class="line">	outputs = <span class="built_in">append</span>(outputs, *NewTXOutput(amount, to))</span><br><span class="line">	<span class="comment">// 如果返回的utxo金额累计大于要花费的金额，则多出的部分就是找零，相当于多个utxo是面额不同的金额累加成一个大额</span></span><br><span class="line">	<span class="keyword">if</span> acc &gt; amount &#123;</span><br><span class="line">		outputs = <span class="built_in">append</span>(outputs, *NewTXOutput(acc-amount, from)) <span class="comment">// a change 零钱</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	tx := Transaction&#123;<span class="literal">nil</span>, inputs, outputs&#125;</span><br><span class="line">	tx.ID = tx.Hash()</span><br><span class="line">	UTXOSet.Blockchain.SignTransaction(&amp;tx, wallet.PrivateKey)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> &amp;tx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>因为用户的总金额是通过若干未花费输出累计起来的，而每个output所携带金额不一而足，所以每次转账可能需要消耗多个不同的output，而且还可能涉及找零问题。以上查询返回了一批未花费输出列表validOutputs和他们总共的金额acc. 找出来的未花费输出列表就是本次交易的输入，并将输出结果构造output指向目的用户，并检查是否有找零，将找零返还。</p>
+<p>如果交易顺利完成，转账发起人的“未花费输出”被消耗掉变成了花费状态，而转账接收人to得到了一笔新的“未花费输出”，之后他自己需要转账时，查询自己的未花费输出，即可使用这笔钱。</p>
+<p>最后需要对交易进行签名，表示交易确实是由发起人本人发起（私钥签名），而不是被第三人冒充。</p>
+<h1 id="交易的签名和验证"><a href="#交易的签名和验证" class="headerlink" title="交易的签名和验证"></a>交易的签名和验证</h1><h4 id="签名"><a href="#签名" class="headerlink" title="签名"></a>签名</h4><p>交易的有效性需要首先建立在发起人签名的基础上，防止他人冒充转账或者发起人抵赖，blockchain_go中交易签名实现如下：<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SignTransaction signs inputs of a Transaction</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(bc *Blockchain)</span> <span class="title">SignTransaction</span><span class="params">(tx *Transaction, privKey ecdsa.PrivateKey)</span></span> &#123;</span><br><span class="line">    prevTXs := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]Transaction)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _, vin := <span class="keyword">range</span> tx.Vin &#123;</span><br><span class="line">        prevTX, err := bc.FindTransaction(vin.Txid)</span><br><span class="line">        <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">            log.Panic(err)</span><br><span class="line">        &#125;</span><br><span class="line">        prevTXs[hex.EncodeToString(prevTX.ID)] = prevTX</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    tx.Sign(privKey, prevTXs)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Sign signs each input of a Transaction</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(tx *Transaction)</span> <span class="title">Sign</span><span class="params">(privKey ecdsa.PrivateKey, prevTXs <span class="keyword">map</span>[<span class="keyword">string</span>]Transaction)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> tx.IsCoinbase() &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _, vin := <span class="keyword">range</span> tx.Vin &#123;</span><br><span class="line">        <span class="keyword">if</span> prevTXs[hex.EncodeToString(vin.Txid)].ID == <span class="literal">nil</span> &#123;</span><br><span class="line">            log.Panic(<span class="string">"ERROR: Previous transaction is not correct"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    txCopy := tx.TrimmedCopy()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> inID, vin := <span class="keyword">range</span> txCopy.Vin &#123;</span><br><span class="line">        prevTx := prevTXs[hex.EncodeToString(vin.Txid)]</span><br><span class="line">        txCopy.Vin[inID].Signature = <span class="literal">nil</span></span><br><span class="line">        <span class="comment">// 注意vin.Vout 是该账户之前存在的某比交易的某个可花费输出的下标</span></span><br><span class="line">        txCopy.Vin[inID].PubKey = prevTx.Vout[vin.Vout].PubKeyHash</span><br><span class="line"></span><br><span class="line">        dataToSign := fmt.Sprintf(<span class="string">"%x\n"</span>, txCopy)</span><br><span class="line"></span><br><span class="line">        r, s, err := ecdsa.Sign(rand.Reader, &amp;privKey, []<span class="keyword">byte</span>(dataToSign))</span><br><span class="line">        <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">            log.Panic(err)</span><br><span class="line">        &#125;</span><br><span class="line">        signature := <span class="built_in">append</span>(r.Bytes(), s.Bytes()...)</span><br><span class="line"></span><br><span class="line">        tx.Vin[inID].Signature = signature</span><br><span class="line">        txCopy.Vin[inID].PubKey = <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>交易输入的签名信息是放在TXInput中的signature字段，其中需要包括用户的pubkey，用于之后的验证。需要对每一个输入做签名。</p>
+<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><p>交易签名是发生在交易产生时，交易完成后，Transaction会把交易广播给邻居。节点在进行挖矿时，会整理一段时间的所有交易信息，将这些信息打包进入新的区块，成功加入区块链以后，这个交易就得到了最终的确认。但是在挖矿节点打包交易前，需要对交易的有效性做验证，以防虚假数据，验证实现如下：</p>
+<p>// MineBlock mines a new block with the provided transactions<br>func (bc <em>Blockchain) MineBlock(transactions []</em>Transaction) *Block {<br>    var lastHash []byte<br>    var lastHeight int</p>
+<pre><code>for _, tx := range transactions {
+    // TODO: ignore transaction if it&apos;s not valid
+    if bc.VerifyTransaction(tx) != true {
+        log.Panic(&quot;ERROR: Invalid transaction&quot;)
+    }
+}
+
+...
+...
+...
+
+return block
+</code></pre><p>}<br>// VerifyTransaction verifies transaction input signatures<br>func (bc <em>Blockchain) VerifyTransaction(tx </em>Transaction) bool {<br>    if tx.IsCoinbase() {<br>        return true<br>    }</p>
+<pre><code>prevTXs := make(map[string]Transaction)
+
+for _, vin := range tx.Vin {
+    prevTX, err := bc.FindTransaction(vin.Txid)
+    if err != nil {
+        log.Panic(err)
+    }
+    prevTXs[hex.EncodeToString(prevTX.ID)] = prevTX
+}
+
+return tx.Verify(prevTXs)
+</code></pre><p>}<br>// Verify verifies signatures of Transaction inputs<br>func (tx *Transaction) Verify(prevTXs map[string]Transaction) bool {<br>    if tx.IsCoinbase() {<br>        return true<br>    }</p>
+<pre><code>for _, vin := range tx.Vin {
+    if prevTXs[hex.EncodeToString(vin.Txid)].ID == nil {
+        log.Panic(&quot;ERROR: Previous transaction is not correct&quot;)
+    }
+}
+
+txCopy := tx.TrimmedCopy()
+curve := elliptic.P256()
+
+for inID, vin := range tx.Vin {
+    prevTx := prevTXs[hex.EncodeToString(vin.Txid)]
+    txCopy.Vin[inID].Signature = nil
+    txCopy.Vin[inID].PubKey = prevTx.Vout[vin.Vout].PubKeyHash
+
+    r := big.Int{}
+    s := big.Int{}
+    sigLen := len(vin.Signature)
+    r.SetBytes(vin.Signature[:(sigLen / 2)])
+    s.SetBytes(vin.Signature[(sigLen / 2):])
+
+    x := big.Int{}
+    y := big.Int{}
+    keyLen := len(vin.PubKey)
+    x.SetBytes(vin.PubKey[:(keyLen / 2)])
+    y.SetBytes(vin.PubKey[(keyLen / 2):])
+
+    dataToVerify := fmt.Sprintf(&quot;%x\n&quot;, txCopy)
+
+    rawPubKey := ecdsa.PublicKey{Curve: curve, X: &amp;x, Y: &amp;y}
+    if ecdsa.Verify(&amp;rawPubKey, []byte(dataToVerify), &amp;r, &amp;s) == false {
+        return false
+    }
+    txCopy.Vin[inID].PubKey = nil
+}
+
+return true
+</code></pre><p>}<br>可以看到验证的时候也是每个交易的每个TXInput都单独进行验证，和签名过程很相似，需要构造相同的交易数据txCopy，验证时会用到签名设置的TxInput.PubKeyHash生成一个原始的PublicKey，将前面的signature分拆后通过ecdsa.Verify进行验证。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>以上简单分析和整理了blockchain_go中的交易和UTXO机制的实现过程，加深了区块链中的挖矿，交易和转账的基础技术原理的理解。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/28/Pycharm设置翻译器（解决pip安装的包跟踪问题）/" rel="next" title="Pycharm设置翻译器（解决pip安装的包跟踪问题）">
+                <i class="fa fa-chevron-left"></i> Pycharm设置翻译器（解决pip安装的包跟踪问题）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#比特币中的交易详解"><span class="nav-number">1.</span> <span class="nav-text">比特币中的交易详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1，-输入"><span class="nav-number">1.1.1.</span> <span class="nav-text">1， 输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2，-输出"><span class="nav-number">1.1.2.</span> <span class="nav-text">2， 输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3，-一个交易（多个输入输出的集合）"><span class="nav-number">1.1.3.</span> <span class="nav-text">3， 一个交易（多个输入输出的集合）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#交易范例"><span class="nav-number">2.</span> <span class="nav-text">交易范例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1，在区块链中查询Alice的未花费的输出"><span class="nav-number">2.1.</span> <span class="nav-text">1，在区块链中查询Alice的未花费的输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-构建一个交易"><span class="nav-number">2.2.</span> <span class="nav-text">2, 构建一个交易</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#交易的签名和验证"><span class="nav-number">3.</span> <span class="nav-text">交易的签名和验证</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#签名"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">签名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验证"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">验证</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
