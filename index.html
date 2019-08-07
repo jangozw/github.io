@@ -277,6 +277,177 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/07/以太坊truffle开发实战/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/07/以太坊truffle开发实战/" itemprop="url">
+                  以太坊truffle开发实战
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-08-07 12:11:49 / Modified: 15:34:15" itemprop="dateCreated datePublished" datetime="2019-08-07T12:11:49+08:00">2019-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="以太坊dapp开发入门指引"><a href="#以太坊dapp开发入门指引" class="headerlink" title="以太坊dapp开发入门指引"></a>以太坊dapp开发入门指引</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>适合想了解以太坊dapp开发,了解要做哪些事情，这篇教程以一个简单的部署在区块链上的投票合约为例详细讲述以太坊开发全流程体验。有过程序开基础的人可直接入手，代码很简单预计花费1小时。包含的技术点：</p>
+<ul>
+<li>使用以太坊开发的truffle框架</li>
+<li>使用ganache图形界面版做测试环境</li>
+<li>使用solidity 编写投票合约</li>
+<li>将合约部署到ganache</li>
+<li>使用web3.js调用合约里的方法进行投票和获取票数</li>
+</ul>
+<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>安装node，npm, truffle, ganache(界面版),web3,lite-server</p>
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><h3 id="1-创建项目目录"><a href="#1-创建项目目录" class="headerlink" title="1,创建项目目录"></a>1,创建项目目录</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir Voting &amp;&amp; <span class="built_in">cd</span> Voting</span><br></pre></td></tr></table></figure>
+<h3 id="2，初始化truffle项目"><a href="#2，初始化truffle项目" class="headerlink" title="2，初始化truffle项目"></a>2，初始化truffle项目</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用truffle 初始化项目,会生成一些目录和文件</span></span><br><span class="line">truffle init</span><br></pre></td></tr></table></figure>
+<h3 id="3-创建合约"><a href="#3-创建合约" class="headerlink" title="3,创建合约"></a>3,创建合约</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个合约,文件生成在contracts/Voting.sol</span></span><br><span class="line">truffle create contract Voting</span><br></pre></td></tr></table></figure>
+<h3 id="4-用solidity编写合约代码"><a href="#4-用solidity编写合约代码" class="headerlink" title="4,用solidity编写合约代码"></a>4,用solidity编写合约代码</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编写合约代码</span></span><br><span class="line">见contracts/Voting.sol</span><br></pre></td></tr></table></figure>
+<h3 id="5-编译合约"><a href="#5-编译合约" class="headerlink" title="5,编译合约"></a>5,编译合约</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编译合约，检查是否报错</span></span><br><span class="line"><span class="built_in">cd</span> Voting &amp;&amp; truffle compile</span><br></pre></td></tr></table></figure>
+<h3 id="6-部署前的配置"><a href="#6-部署前的配置" class="headerlink" title="6,部署前的配置"></a>6,部署前的配置</h3><ul>
+<li>打开ganache软件界面版<br>如图：软件自动生成了10个账户和对应的rpc地址和端口</li>
+</ul>
+<p><img src="/images/pasted-50.png" alt="upload successful"></p>
+<ul>
+<li>在Voting/truffle.config.js（truffle自动生成的）里面修改监听的url和端口，这个是ganache中给的</li>
+</ul>
+<p><img src="/images/pasted-52.png" alt="upload successful"></p>
+<ul>
+<li>在Voting/migrations/里复制一个migration.js 少动修改作为部署配置<br>如Voting/migrations/2_migtation_vote.js</li>
+</ul>
+<p><img src="/images/pasted-54.png" alt="upload successful"><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 部署合约</span></span><br><span class="line">$ <span class="built_in">cd</span> Voting </span><br><span class="line">$ truffle migrate --reset</span><br></pre></td></tr></table></figure></p>
+<p>部署成功后合约就永久在区块链上了</p>
+<h3 id="7，调用合约方法"><a href="#7，调用合约方法" class="headerlink" title="7，调用合约方法"></a>7，调用合约方法</h3><p>调用合约使用web3.js, 本案例直接用html引入js展示调用<br>具体看 Voting/src下的html,js 代码很简单，里面注释充分，不多讲。</p>
+<h3 id="8，预览"><a href="#8，预览" class="headerlink" title="8，预览"></a>8，预览</h3><p><img src="/images/pasted-56.png" alt="upload successful"><br>package.json中红框内写lite-server,如果没有安装就<br><figure class="highlight plain"><figcaption><span>install lite-server``` 安装。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">创建Voting/bs-config.js 这个是用作node.js 服务器用的：</span><br><span class="line"></span><br><span class="line">![upload successful](/images/pasted-58.png)</span><br><span class="line">然后浏览器访问：</span><br><span class="line">```sh</span><br><span class="line">$ cd Voting</span><br><span class="line">$ npm run dev</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/pasted-60.png" alt="upload successful"><br>此时浏览器会自动打开<a href="http://localhost:3000/" target="_blank" rel="noopener">http://localhost:3000/</a></p>
+<p><img src="/images/pasted-62.png" alt="upload successful"><br>打开浏览器开发者模式的console,观察web3.js调用结果。</p>
+<p>至此一个简单的以太坊dapp在测试环境开发完成。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/09/比特币中的交易详解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1729,145 +1900,6 @@ return true
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/04/go学习-方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/04/go学习-方法/" itemprop="url">
-                  go学习-方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-02-04 22:16:00 / Modified: 22:18:32" itemprop="dateCreated datePublished" datetime="2019-02-04T22:16:00+08:00">2019-02-04</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line">type dog struct &#123;</span><br><span class="line">	name string</span><br><span class="line">	age int</span><br><span class="line">&#125;</span><br><span class="line">type cat struct &#123;</span><br><span class="line">	name string</span><br><span class="line">	age int</span><br><span class="line">&#125;</span><br><span class="line">func main()  &#123;</span><br><span class="line">//结构体传递给方法是值传递，不会改变原来的结构体，如需改变则方法需要定义成指针接收者</span><br><span class="line">	a := dog&#123;&#125;</span><br><span class="line">	b := cat&#123;&#125;</span><br><span class="line">	fmt.Println(a, b)</span><br><span class="line">	a.getName()</span><br><span class="line">	b.getName()</span><br><span class="line">	fmt.Println(a, b)</span><br><span class="line">	a.getDogName()</span><br><span class="line">	fmt.Println(a)</span><br><span class="line">&#125;</span><br><span class="line">//getName 方法名可以重复前面的接收者不同就行</span><br><span class="line">func (a dog)getName()  &#123;</span><br><span class="line">	a.name = &quot;toto&quot;</span><br><span class="line">&#125;</span><br><span class="line">func (a cat)getName()  &#123;</span><br><span class="line">	a.name = &quot;mimi&quot;</span><br><span class="line">&#125;</span><br><span class="line">//定义接受者是一个dog 类型的指针,则a.name 会全局改变</span><br><span class="line">func (a *dog)getDogName()  &#123;</span><br><span class="line">	a.name = &quot;anna&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1915,7 +1947,7 @@ return true
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

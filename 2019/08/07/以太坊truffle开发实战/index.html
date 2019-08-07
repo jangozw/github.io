@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="以太坊dapp开发入门指引简介适合想了解以太坊dapp开发,了解要做哪些事情，这篇教程以一个简单的部署在区块链上的投票合约为例详细讲述以太坊开发全流程体验。有过程序开基础的人可直接入手，代码很简单预计花费1小时。包含的技术点：  使用以太坊开发的truffle框架 使用ganache图形界面版做测试环境 使用solidity 编写投票合约 将合约部署到ganache 使用web3.js调用合约里的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="以太坊truffle开发实战">
+<meta property="og:url" content="http://yoursite.com/2019/08/07/以太坊truffle开发实战/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="以太坊dapp开发入门指引简介适合想了解以太坊dapp开发,了解要做哪些事情，这篇教程以一个简单的部署在区块链上的投票合约为例详细讲述以太坊开发全流程体验。有过程序开基础的人可直接入手，代码很简单预计花费1小时。包含的技术点：  使用以太坊开发的truffle框架 使用ganache图形界面版做测试环境 使用solidity 编写投票合约 将合约部署到ganache 使用web3.js调用合约里的">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/pasted-50.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-52.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-54.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-56.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-60.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-62.png">
+<meta property="og:updated_time" content="2019-08-07T07:34:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="以太坊truffle开发实战">
+<meta name="twitter:description" content="以太坊dapp开发入门指引简介适合想了解以太坊dapp开发,了解要做哪些事情，这篇教程以一个简单的部署在区块链上的投票合约为例详细讲述以太坊开发全流程体验。有过程序开基础的人可直接入手，代码很简单预计花费1小时。包含的技术点：  使用以太坊开发的truffle框架 使用ganache图形界面版做测试环境 使用solidity 编写投票合约 将合约部署到ganache 使用web3.js调用合约里的">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-50.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/07/以太坊truffle开发实战/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>以太坊truffle开发实战 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/07/以太坊truffle开发实战/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">以太坊truffle开发实战
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-08-07 12:11:49 / Modified: 15:34:15" itemprop="dateCreated datePublished" datetime="2019-08-07T12:11:49+08:00">2019-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="以太坊dapp开发入门指引"><a href="#以太坊dapp开发入门指引" class="headerlink" title="以太坊dapp开发入门指引"></a>以太坊dapp开发入门指引</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>适合想了解以太坊dapp开发,了解要做哪些事情，这篇教程以一个简单的部署在区块链上的投票合约为例详细讲述以太坊开发全流程体验。有过程序开基础的人可直接入手，代码很简单预计花费1小时。包含的技术点：</p>
+<ul>
+<li>使用以太坊开发的truffle框架</li>
+<li>使用ganache图形界面版做测试环境</li>
+<li>使用solidity 编写投票合约</li>
+<li>将合约部署到ganache</li>
+<li>使用web3.js调用合约里的方法进行投票和获取票数</li>
+</ul>
+<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>安装node，npm, truffle, ganache(界面版),web3,lite-server</p>
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><h3 id="1-创建项目目录"><a href="#1-创建项目目录" class="headerlink" title="1,创建项目目录"></a>1,创建项目目录</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir Voting &amp;&amp; <span class="built_in">cd</span> Voting</span><br></pre></td></tr></table></figure>
+<h3 id="2，初始化truffle项目"><a href="#2，初始化truffle项目" class="headerlink" title="2，初始化truffle项目"></a>2，初始化truffle项目</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用truffle 初始化项目,会生成一些目录和文件</span></span><br><span class="line">truffle init</span><br></pre></td></tr></table></figure>
+<h3 id="3-创建合约"><a href="#3-创建合约" class="headerlink" title="3,创建合约"></a>3,创建合约</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个合约,文件生成在contracts/Voting.sol</span></span><br><span class="line">truffle create contract Voting</span><br></pre></td></tr></table></figure>
+<h3 id="4-用solidity编写合约代码"><a href="#4-用solidity编写合约代码" class="headerlink" title="4,用solidity编写合约代码"></a>4,用solidity编写合约代码</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编写合约代码</span></span><br><span class="line">见contracts/Voting.sol</span><br></pre></td></tr></table></figure>
+<h3 id="5-编译合约"><a href="#5-编译合约" class="headerlink" title="5,编译合约"></a>5,编译合约</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编译合约，检查是否报错</span></span><br><span class="line"><span class="built_in">cd</span> Voting &amp;&amp; truffle compile</span><br></pre></td></tr></table></figure>
+<h3 id="6-部署前的配置"><a href="#6-部署前的配置" class="headerlink" title="6,部署前的配置"></a>6,部署前的配置</h3><ul>
+<li>打开ganache软件界面版<br>如图：软件自动生成了10个账户和对应的rpc地址和端口</li>
+</ul>
+<p><img src="/images/pasted-50.png" alt="upload successful"></p>
+<ul>
+<li>在Voting/truffle.config.js（truffle自动生成的）里面修改监听的url和端口，这个是ganache中给的</li>
+</ul>
+<p><img src="/images/pasted-52.png" alt="upload successful"></p>
+<ul>
+<li>在Voting/migrations/里复制一个migration.js 少动修改作为部署配置<br>如Voting/migrations/2_migtation_vote.js</li>
+</ul>
+<p><img src="/images/pasted-54.png" alt="upload successful"><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 部署合约</span></span><br><span class="line">$ <span class="built_in">cd</span> Voting </span><br><span class="line">$ truffle migrate --reset</span><br></pre></td></tr></table></figure></p>
+<p>部署成功后合约就永久在区块链上了</p>
+<h3 id="7，调用合约方法"><a href="#7，调用合约方法" class="headerlink" title="7，调用合约方法"></a>7，调用合约方法</h3><p>调用合约使用web3.js, 本案例直接用html引入js展示调用<br>具体看 Voting/src下的html,js 代码很简单，里面注释充分，不多讲。</p>
+<h3 id="8，预览"><a href="#8，预览" class="headerlink" title="8，预览"></a>8，预览</h3><p><img src="/images/pasted-56.png" alt="upload successful"><br>package.json中红框内写lite-server,如果没有安装就<br><figure class="highlight plain"><figcaption><span>install lite-server``` 安装。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">创建Voting/bs-config.js 这个是用作node.js 服务器用的：</span><br><span class="line"></span><br><span class="line">![upload successful](/images/pasted-58.png)</span><br><span class="line">然后浏览器访问：</span><br><span class="line">```sh</span><br><span class="line">$ cd Voting</span><br><span class="line">$ npm run dev</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/pasted-60.png" alt="upload successful"><br>此时浏览器会自动打开<a href="http://localhost:3000/" target="_blank" rel="noopener">http://localhost:3000/</a></p>
+<p><img src="/images/pasted-62.png" alt="upload successful"><br>打开浏览器开发者模式的console,观察web3.js调用结果。</p>
+<p>至此一个简单的以太坊dapp在测试环境开发完成。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/09/比特币中的交易详解/" rel="next" title="比特币中的交易详解">
+                <i class="fa fa-chevron-left"></i> 比特币中的交易详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#以太坊dapp开发入门指引"><span class="nav-number">1.</span> <span class="nav-text">以太坊dapp开发入门指引</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境准备"><span class="nav-number">1.2.</span> <span class="nav-text">环境准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流程"><span class="nav-number">1.3.</span> <span class="nav-text">流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建项目目录"><span class="nav-number">1.3.1.</span> <span class="nav-text">1,创建项目目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2，初始化truffle项目"><span class="nav-number">1.3.2.</span> <span class="nav-text">2，初始化truffle项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-创建合约"><span class="nav-number">1.3.3.</span> <span class="nav-text">3,创建合约</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-用solidity编写合约代码"><span class="nav-number">1.3.4.</span> <span class="nav-text">4,用solidity编写合约代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-编译合约"><span class="nav-number">1.3.5.</span> <span class="nav-text">5,编译合约</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-部署前的配置"><span class="nav-number">1.3.6.</span> <span class="nav-text">6,部署前的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7，调用合约方法"><span class="nav-number">1.3.7.</span> <span class="nav-text">7，调用合约方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8，预览"><span class="nav-number">1.3.8.</span> <span class="nav-text">8，预览</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
